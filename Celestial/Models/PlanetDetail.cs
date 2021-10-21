@@ -5,15 +5,13 @@ using System.Threading.Tasks;
 
 namespace Celestial.Models
 {
-    public class Star
+    public class PlanetDetail
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int Diameter { get; set; }
-        public int Mass { get; set; }
-        public int StarTypeId { get; set; }
-        public StarType StarType { get; set; }
+        public int PlanetId { get; set; }
+        public Planet Planet { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public string Notes { get; set; }
     }
 }
