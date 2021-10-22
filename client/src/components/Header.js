@@ -10,8 +10,8 @@ const Header = () => {
       </Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Feed
+          <Link to="/star/create" className="nav-link">
+            New Star
           </Link>
         </li>
         <li className="nav-item">
