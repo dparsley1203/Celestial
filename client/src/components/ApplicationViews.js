@@ -15,13 +15,14 @@ const ApplicationViews = ({isLoggedIn}) => {
             <Route path="/" exact>
             {isLoggedIn ? <StarList /> : <Redirect to="/login" />}
             </Route>
-
-            <Route path="/star/:id" exact>
-            {isLoggedIn ? <StarDetail /> : <Redirect to="/login" />}
-            </Route>
-
+            
+            
             <Route path="/star/create" exact>
             {isLoggedIn ? <StarForm /> : <Redirect to="/login" />}
+            </Route>
+            
+            <Route path="/star/:id" exact>
+            {isLoggedIn ? <StarDetail /> : <Redirect to="/login" />}
             </Route>
 
             <Route path="/star/edit/:id" exact>

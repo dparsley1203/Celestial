@@ -92,3 +92,5 @@ export const StarForm = () => {
     )
 
 }
+
+export default StarForm;
