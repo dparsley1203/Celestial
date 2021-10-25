@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { Container, Form } from "reactstrap"
+import { Container, Input } from "reactstrap"
 import { addStar, getStarsById, updateStar } from "../modules/starManager";
+import { starTypes } from "../modules/starTypeManager";
 
-export const StarForm = () => {
+const StarForm = () => {
 
     const history = useHistory();
-
+    const [ starType, setStarType ] = useState([])
     const [ star, setStar ] = useState({
         name: "",
-        diameter: 0,
-        mass: 0,
+        diameter: "",
+        mass: "",
         starTypeId: "",
         temperature: "",
     })
 
-    const starId = useParams();
+    const  starId  = useParams();
 
     if(starId.id && star.name === "")
     {
@@ -36,12 +37,21 @@ export const StarForm = () => {
 
     const handleUpdateStar = () => {
         updateStar(star)
-        .then(history.push("/"))
+        .then(history.push(`/star/${starId.id}`))
     }
 
     const handleClickCancel = () => {
-        history.push("/")
+        history.push(`/star/${starId.id}`)
     }
+
+    const GetStarTypes = () => {
+        starTypes()
+        .then(type => setStarType(type))
+    }
+
+    useEffect(() => {
+        GetStarTypes();
+    }, []);
 
     return (
         <Container>
@@ -50,21 +60,23 @@ export const StarForm = () => {
                 <div className="container-5">
                 <div className ="form-group">
                     <label for="name">Name</label>
-                    <input type="name" class="form-control" id="name" placeholder ="name" value={star.name} onChange={handleInput} required/>
+                    <Input type="name" class="form-control" id="name" placeholder ="name" value={star.name} onChange={handleInput} required/>
 
                     <label for="diameter">Diameter</label>
-                    <input type="number" class="form-control" id="diameter" placeholder ="diameter in kilometers" value={star.diameter} onChange={handleInput} required/>
+                    <Input type="text" class="form-control" id="diameter" placeholder ="diameter in kilometers" value={star.diameter} onChange={handleInput} required/>
 
                     <label for="mass">Mass Sun is equal to 1 solar mass</label>
-                    <input type="number" class="form-control" id="mass" placeholder ="solor mass" value={star.mass} onChange={handleInput} required/>
+                    <Input type="text" class="form-control" id="mass" placeholder ="solor mass" value={star.mass} onChange={handleInput} required/>
 
                     <label for="starType">Star Type</label>
-                    <input type="select" name="select" id="starTypeId" value={star.starTypeId} onChange={handleInput} >
+                    <Input type="select" name="select" id="starTypeId" value={star.starTypeId} onChange={handleInput} >
                         <option value={null}>Select a Star Type</option>
-                        {star.starType?.map(st => {
+                        {starType.map((st) => {
                             return <option value={st.id}>{st.type}</option>
-                        })}
-                    </input>
+                            })}
+                    </Input>
+
+                    
 
                     <label for="temperature">Temperature</label>
                     <input type="number" class="form-control" id="temperature" placeholder ="temperature in kelvin degrees" value={star.temperature} onChange={handleInput} required/>
@@ -93,4 +105,4 @@ export const StarForm = () => {
 
 }
 
-export default StarForm;
+export default StarForm

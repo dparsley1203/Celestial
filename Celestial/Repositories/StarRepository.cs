@@ -13,7 +13,7 @@ namespace Celestial.Repositories
     {
         public StarRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<Star> GetAll()
+        public List<Star> GetAll(string fireBaseId)
         {
             using (var conn = Connection)
             {
@@ -28,8 +28,10 @@ namespace Celestial.Repositories
 
                                           FROM Star s
 
-                                          JOIN StarType st ON s.StarTypeId = st.Id
-                                          JOIN [User] u on s.userId = u.Id";
+                                          LEFT JOIN StarType st ON s.StarTypeId = st.Id
+                                          LEFT JOIN [User] u on s.userId = u.Id
+                                          WHERE u.FireBaseId = @FireBaseId";
+                    DbUtils.AddParameter(cmd, "@FireBaseId", fireBaseId);
 
                     var reader = cmd.ExecuteReader();
                     var stars = new List<Star>();

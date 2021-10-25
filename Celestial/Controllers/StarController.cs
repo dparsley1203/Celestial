@@ -13,22 +13,26 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class StarController : ControllerBase
     {
         private readonly IStarRepository _starRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IStarTypeRepository _starTypeRepository;
 
-        public StarController(IStarRepository starRepository, IUserRepository userRepository)
+        public StarController(IStarRepository starRepository, IUserRepository userRepository, IStarTypeRepository starTypeRepository)
         {
             _starRepository = starRepository;
             _userRepository = userRepository;
+            _starTypeRepository = starTypeRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-/*            var currentUserId = GetCurrentUserProfile().Id;*/
-            var stars = _starRepository.GetAll();
+            var currentUserId = GetCurrentUserProfile();
+            var stars = _starRepository.GetAll(currentUserId.FireBaseId);
 
             return Ok(stars);
         }
@@ -36,6 +40,7 @@ namespace Celestial.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
+            var currentUserId = GetCurrentUserProfile().Id;
             var star = _starRepository.GetStarById(id);
             if (star == null)
             {
@@ -47,6 +52,7 @@ namespace Celestial.Controllers
         [HttpPost]
         public IActionResult Post(Star star)
         {
+            star.UserId = GetCurrentUserProfile().Id;
             try
             {
                 _starRepository.Add(star);
@@ -68,6 +74,7 @@ namespace Celestial.Controllers
         [HttpPut]
         public IActionResult Update(Star star)
         {
+            
             try
             {
                 _starRepository.Update(star);
@@ -82,11 +89,11 @@ namespace Celestial.Controllers
 
 
         // Returned a null object.  Attempting to 
-/*        private User GetCurrentUserProfile()
+        private User GetCurrentUserProfile()
         {
-            var fireBaseId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var fireBaseId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return _userRepository.GetByFireBaseId(fireBaseId);
-        }*/
+        }
 
     }
 }

@@ -42,9 +42,8 @@ export const updateStar = (star) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            bod: JSON.stringify(star),
+            body: JSON.stringify(star),
         })
-        .then(getStars())
     );
 }
 
@@ -61,7 +60,8 @@ export const deleteStar = (star) => {
 }
 
 export const addStar = (star) => {
-    return getToken().then((token) =>
+    return getToken()
+    .then((token) =>
         fetch(_apiUrl, {
             method: "POST",
             headers: {

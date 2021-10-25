@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import { StarDetail } from "./StarDetail";
-import { StarForm } from "./StarForm";
+import  StarForm  from "./StarForm";
 import { StarList } from "./StarList";
 
 
@@ -20,7 +20,7 @@ const ApplicationViews = ({isLoggedIn}) => {
             <Route path="/star/create" exact>
             {isLoggedIn ? <StarForm /> : <Redirect to="/login" />}
             </Route>
-            
+
             <Route path="/star/:id" exact>
             {isLoggedIn ? <StarDetail /> : <Redirect to="/login" />}
             </Route>

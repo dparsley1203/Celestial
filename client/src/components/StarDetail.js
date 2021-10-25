@@ -20,7 +20,8 @@ export const StarDetail = () => {
         const confirm = window.confirm("Are you sure you want to delete this star?")
         if(confirm == true)
         {deleteStar(star)
-        .then(stars => setStar(stars))} else {
+        .then(stars => setStar(stars))
+        .then(history.push("/"))} else {
         return;
     }}
 
