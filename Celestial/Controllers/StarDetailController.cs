@@ -13,54 +13,46 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-
-    public class StarController : ControllerBase
+    
+    public class StarDetailController : ControllerBase
     {
+        private readonly IStarDetailRepository _starDetailRepository;
         private readonly IStarRepository _starRepository;
         private readonly IUserRepository _userRepository;
-        private readonly IStarTypeRepository _starTypeRepository;
-        private readonly IStarDetailRepository _starDetailRepository;
 
-        public StarController(IStarRepository starRepository, IUserRepository userRepository, IStarTypeRepository starTypeRepository, IStarDetailRepository starDetailRepository)
+        public StarDetailController(IStarDetailRepository starDetailRepository, IUserRepository userRepository, IStarRepository starRepository)
         {
+            _starDetailRepository = starDetailRepository;
             _starRepository = starRepository;
             _userRepository = userRepository;
-            _starTypeRepository = starTypeRepository;
-            _starDetailRepository = starDetailRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
             var currentUserId = GetCurrentUserProfile();
-            var stars = _starRepository.GetAll(currentUserId.FireBaseId);
+            var starDetail = _starDetailRepository.GetAll();
 
-            return Ok(stars);
+            return Ok(starDetail);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var currentUserId = GetCurrentUserProfile().Id;
-            var star = _starRepository.GetStarById(id);
-            var details = _starDetailRepository.GetDetailsByStarId(id);
+            var currentUserId = GetCurrentUserProfile();
+            var starDetails = _starDetailRepository.GetDetailsByStarId(id);
 
-            if (star == null)
-            {
-                return NotFound();
-            }
-            return Ok(star);
+            return Ok(starDetails);
         }
 
         [HttpPost]
-        public IActionResult Post(Star star)
+        public IActionResult Post(StarDetail starDetail)
         {
-            star.UserId = GetCurrentUserProfile().Id;
+            starDetail.UserId = GetCurrentUserProfile().Id;
             try
             {
-                _starRepository.Add(star);
-                return CreatedAtAction("Get", new { id = star.Id }, star);
+                _starDetailRepository.Add(starDetail);
+                return CreatedAtAction("Get", new { id = starDetail.Id }, starDetail);
             }
             catch
             {
@@ -71,19 +63,19 @@ namespace Celestial.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _starRepository.Delete(id);
+            _starDetailRepository.Delete(id);
             return NoContent();
         }
 
         [HttpPut]
-        public IActionResult Update(Star star)
+        public IActionResult Update(StarDetail starDetail)
         {
-            
+
             try
             {
-                _starRepository.Update(star);
+                _starDetailRepository.Update(starDetail);
 
-                return Ok(star);
+                return Ok(starDetail);
             }
             catch
             {
@@ -91,13 +83,10 @@ namespace Celestial.Controllers
             }
         }
 
-
-        // Returned a null object.  Attempting to 
         private User GetCurrentUserProfile()
         {
             var fireBaseId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return _userRepository.GetByFireBaseId(fireBaseId);
         }
-
     }
 }
