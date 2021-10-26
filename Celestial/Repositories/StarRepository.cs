@@ -31,6 +31,7 @@ namespace Celestial.Repositories
                                           LEFT JOIN StarType st ON s.StarTypeId = st.Id
                                           LEFT JOIN [User] u on s.userId = u.Id
                                           WHERE u.FireBaseId = @FireBaseId";
+
                     DbUtils.AddParameter(cmd, "@FireBaseId", fireBaseId);
 
                     var reader = cmd.ExecuteReader();

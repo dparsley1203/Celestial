@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Celestial.Repositories
 {
-    public class StarDetailRepository : BaseRepository
+    public class StarDetailRepository : BaseRepository, IStarDetailRepository
     {
         public StarDetailRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -18,12 +18,18 @@ namespace Celestial.Repositories
             using (var conn = Connection)
             {
                 conn.Open();
-                //gets all the stars, types, and user who made them
+
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT *
-                                        FROM StarType";
+                    cmd.CommandText = @"SELECT sd.Id, sd.StarId, sd.UserId, sd.Notes,
+                                        s.Id, s.Name, s.Diameter, s.mass, s.Temperature, 
+                                        u.Id, u.UserName, u.Email
+                                        
+                                        FROM StarDetail sd
+                                        JOIN Star s ON s.Id = sd.StarId
+                                        JOIN [User] u On u.Id = sd.UserId";
 
+                    /*DbUtils.AddParameter(cmd, "@FireBaseId", fireBaseId);*/
                     var reader = cmd.ExecuteReader();
                     var starDetails = new List<StarDetail>();
                     while (reader.Read())
@@ -44,9 +50,14 @@ namespace Celestial.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT *
-                                        FROM StarDetail
-                                        WHERE StarDetail.Id = @Id";
+                    cmd.CommandText = @"SELECT sd.Id, sd.StarId, sd.UserId, sd.Notes,
+                                        s.Id, s.Name, s.Diameter, s.mass, s.Temperature, 
+                                        u.Id, u.UserName, u.Email
+                                        
+                                        FROM StarDetail sd
+                                        JOIN Star s ON s.Id = sd.StarId
+                                        JOIN [User] u On u.Id = sd.UserId
+                                        WHERE sd.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
@@ -71,7 +82,8 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT sd.Id, sd.StarId, sd.UserId, sd.Notes,
-                                        s.Id, s.Name, u.Id, u.UserName, u.Email
+                                        s.Id, s.Name, s.Diameter, s.mass, s.Temperature, 
+                                        u.Id, u.UserName, u.Email
                                         
                                         FROM StarDetail sd
                                         JOIN Star s ON s.Id = sd.StarId
@@ -134,7 +146,7 @@ namespace Celestial.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"UPDATE Star
+                    cmd.CommandText = @"UPDATE StarDetail
                                         SET StarId = @starId, Notes = @notes  
                                         WHERE Id = @Id";
 

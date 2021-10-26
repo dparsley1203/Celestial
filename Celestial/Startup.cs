@@ -32,6 +32,7 @@ namespace Celestial
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IStarRepository, StarRepository>();
             services.AddTransient<IStarTypeRepository, StarTypeRepository>();
+            services.AddTransient<IStarDetailRepository, StarDetailRepository>();
 
             services.AddControllers();
             services.AddMvc().AddJsonOptions(options =>
