@@ -146,7 +146,7 @@ namespace Celestial.Repositories
             }
         }
 
-        public void Planet(Planet planet)
+        public void Add(Planet planet)
         {
             using (var conn = Connection)
             {

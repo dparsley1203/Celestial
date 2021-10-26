@@ -22,7 +22,7 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT pd.Id, pd.PlanetId, pd.UserId, pd.Notes,
-                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod 
+                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod, 
                                         u.Id, u.UserName, u.Email
                                         
                                         FROM PlanetDetail pd
@@ -52,7 +52,7 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT pd.Id, pd.PlanetId, pd.UserId, pd.Notes,
-                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod 
+                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod, 
                                         u.Id, u.UserName, u.Email
                                         
                                         FROM PlanetDetail pd
@@ -84,7 +84,7 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT pd.Id, pd.PlanetId, pd.UserId, pd.Notes,
-                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod 
+                                        p.Id, p.Name, p.Diameter, p.DistanceFromStar, p.OrbitalPeriod, 
                                         u.Id, u.UserName, u.Email
                                         
                                         FROM PlanetDetail pd

@@ -9,7 +9,7 @@ namespace Celestial.Repositories
         List<Planet> GetAll(string fireBaseId);
         Planet GetPlanetById(int id);
         List<Planet> GetPlanetsByStarId(int id);
-        void Planet(Planet planet);
+        void Add(Planet planet);
         void Update(Planet planet);
     }
 }
