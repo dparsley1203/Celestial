@@ -18,7 +18,7 @@ namespace Celestial.Repositories
             using (var conn = Connection)
             {
                 conn.Open();
-                //gets all the stars, types, and user who made them
+
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT sd.Id, sd.StarId, sd.UserId, sd.Notes,
@@ -57,7 +57,7 @@ namespace Celestial.Repositories
                                         FROM StarDetail sd
                                         JOIN Star s ON s.Id = sd.StarId
                                         JOIN [User] u On u.Id = sd.UserId
-                                        WHERE StarDetail.Id = @Id";
+                                        WHERE sd.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
@@ -146,7 +146,7 @@ namespace Celestial.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"UPDATE Star
+                    cmd.CommandText = @"UPDATE StarDetail
                                         SET StarId = @starId, Notes = @notes  
                                         WHERE Id = @Id";
 
