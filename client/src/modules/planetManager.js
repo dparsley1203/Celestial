@@ -33,6 +33,14 @@ export const getPlanetsById = (id) => {
     );    
 }
 
+export const getPlanetsBySunId = (id) => {
+
+            return fetch(`${_apiUrl}/SolarSystem/${id}`)
+
+            .then((res) => res.json())
+        
+}
+
 export const updatePlanet = (planet) => {
     return getToken()
     .then((token) => 

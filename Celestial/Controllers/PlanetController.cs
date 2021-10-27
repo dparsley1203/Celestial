@@ -14,6 +14,7 @@ namespace Celestial.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    
     public class PlanetController : ControllerBase
     {
         private readonly IPlanetRepository _planetRepository;
@@ -32,8 +33,8 @@ namespace Celestial.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var currentUserId = GetCurrentUserProfile();
-            var planet = _planetRepository.GetAll(currentUserId.FireBaseId);
+            var currentUserId = GetCurrentUserProfile().Id;
+            var planet = _planetRepository.GetAll(currentUserId);
 
             return Ok(planet);
         }
@@ -44,6 +45,20 @@ namespace Celestial.Controllers
             var currentUserId = GetCurrentUserProfile().Id;
             var planet = _planetRepository.GetPlanetById(id);
             var details = _planetDetailRepository.GetDetailsByPlanetId(id);
+
+            if (planet == null)
+            {
+                return NotFound();
+            }
+            return Ok(planet);
+        }
+
+        [HttpGet("SolarSystem/{id}")]
+        public IActionResult GetPlanetsByStar(int id)
+        {
+            
+            var planet = _planetRepository.GetPlanetsByStarId(id);
+            
 
             if (planet == null)
             {

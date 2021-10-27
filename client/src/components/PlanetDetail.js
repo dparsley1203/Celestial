@@ -34,7 +34,8 @@ export const PlanetDetail = () => {
         history.push(`/planet/edit/${planet.id}`)
     }
 
-    console.log(planet)
+    console.log(planetDetails)
+
     return (
         <div>
             <p> Planet Name: {planet.name}</p>
@@ -44,7 +45,7 @@ export const PlanetDetail = () => {
             <p> Belongs to Star: {planet.star?.name} </p>
             <p> Planet Type: {planet.planetType?.type}</p>
             <p> Planet color: {planet.color?.paint}</p>
-            <div className="container">{planetDetails?.map((pd) => (<p> {pd.user.userName}: {pd.notes}</p>))} </div>
+            {/* <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes}</p>))} </div> */}
 
                 <Col>
                     <Button onClick={handleClickDeletePlanet}color="danger">Delete</Button>
