@@ -2,25 +2,46 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlueSun from "../Img/BlueSun.png";
 import YellowSun from '../Img/YellowSun.png';
+import { PlanetList } from "./PlanetList";
+import "./ApplicationViews"
+
 
 export const Star = ({star}) => {
 
-    console.log(star)
     let imgtype 
     if (star.starTypeId === 1) {
-        imgtype = <img src={BlueSun} width="200" height="100" />
+        imgtype = <img src={BlueSun} width="200" height="200" />
     } else {
-        imgtype = <img src={YellowSun} width="100" height="50" />
+        imgtype = <img src={YellowSun} width="100" height="100" />
     }
+
+//    console.log(planet)
+
+//     let planetimgtype
+//     if (planet.planetTypeId === 1) {
+//         planetimgtype = <img src={Redearth} width="200" height="100"/> 
+//     } else {
+//         planetimgtype = <img src={earth} width="200" height="100"/> 
+//     }
     
 
     return (
-        <div>
+        <>
+        <div className="star">
             
             <Link to={`/star/${star.id}`}>
                 {imgtype}
             </Link>
-            
         </div>
+        <p>{star.name}</p>
+            <div><PlanetList /></div>
+
+        {/* <div>
+            <Link to={`/planet/${planet.id}`}>
+                {planetimgtype}
+            </Link>
+        </div>
+        <p>{planet.name}</p> */}
+        </>
     )
 }

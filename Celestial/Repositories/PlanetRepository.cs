@@ -23,12 +23,12 @@ namespace Celestial.Repositories
                     cmd.CommandText = @"  SELECT p.Id, p.Name, p.Diameter, p.DistanceFromStar,
                                           p.OrbitalPeriod, p.StarId, p.PlanetTypeId, p.ColorId, p.UserId,
 
-                                          s.Name, s.Diameter, s.Mass, 
+                                          s.Name AS SunName, s.Diameter AS SunDiameter, s.Mass, 
                                           s.Temperature,
 
                                           pt.Type, pt.Details,
 
-                                          c.Id, c.Color,
+                                          c.Id, c.Paint,
 
                                           u.UserName, u.Email
                                 
@@ -67,12 +67,12 @@ namespace Celestial.Repositories
                     cmd.CommandText = @"SELECT p.Id, p.Name, p.Diameter, p.DistanceFromStar,
                                           p.OrbitalPeriod, p.StarId, p.PlanetTypeId, p.ColorId, p.UserId,
 
-                                          s.Name, s.Diameter, s.Mass, 
+                                          s.Name AS SunName, s.Diameter AS SunDiameter, s.Mass, 
                                           s.Temperature,
 
                                           pt.Type, pt.Details,
 
-                                          c.Id, c.Color,
+                                          c.Id, c.Paint,
 
                                           u.UserName, u.Email
                                 
@@ -82,7 +82,7 @@ namespace Celestial.Repositories
                                           LEFT JOIN PlanetType pt ON pt.Id = p.PlanetTypeId
                                           LEFT JOIN Color c ON c.Id = p.ColorId
                                           LEFT JOIN [User] u ON u.Id = p.UserId
-                                          WHERE p.StarId = @Id";
+                                          WHERE p.Id = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
@@ -112,12 +112,12 @@ namespace Celestial.Repositories
                     cmd.CommandText = @"SELECT p.Id, p.Name, p.Diameter, p.DistanceFromStar,
                                           p.OrbitalPeriod, p.StarId, p.PlanetTypeId, p.ColorId, p.UserId,
 
-                                          s.Name, s.Diameter, s.Mass, 
+                                          s.Name AS SunName, s.Diameter AS SunDiameter, s.Mass, 
                                           s.Temperature,
 
                                           pt.Type, pt.Details,
 
-                                          c.Id, c.Color,
+                                          c.Id, c.Paint,
 
                                           u.UserName, u.Email
                                 
@@ -127,7 +127,8 @@ namespace Celestial.Repositories
                                           LEFT JOIN PlanetType pt ON pt.Id = p.PlanetTypeId
                                           LEFT JOIN Color c ON c.Id = p.ColorId
                                           LEFT JOIN [User] u ON u.Id = p.UserId
-                                          WHERE p.Id = @Id";
+                                          
+                                          WHERE p.StarId = @Id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
@@ -228,8 +229,8 @@ namespace Celestial.Repositories
                 Star = new Star()
                 {
                     Id = DbUtils.GetInt(reader, "StarId"),
-                    Name = DbUtils.GetString(reader, "Name"),
-                    Diameter = DbUtils.GetInt(reader, "Diameter"),
+                    Name = DbUtils.GetString(reader, "SunName"),
+                    Diameter = DbUtils.GetInt(reader, "SunDiameter"),
                     Mass = DbUtils.GetInt(reader, "Mass"),
                     Temperature = DbUtils.GetInt(reader, "Temperature"),
                 },
