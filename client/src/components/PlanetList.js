@@ -37,11 +37,9 @@ export const PlanetList = () => {
         <div>
             <div>
                 {
-                    planets.filter((planet) => {
-                        return planet.starId === 1
-                    }).map(planet => {
-                        return <Planet planet={planet} key={planet.id} />
-                    })
+                    planets.map(planet => (
+                        <Planet planet={planet} key={planet.id} />
+                    ))
                 }
             </div>
         </div>
@@ -52,3 +50,9 @@ export const PlanetList = () => {
 // {planets.map(planet => (
 //     <Planet planet={planet} key={planet.id} />
 // ))}
+
+// planets.filter((planet) => {
+//     return planet.starId === stars.id
+// }).map(planet => {
+//     return <Planet planet={planet} key={planet.id} />
+// })

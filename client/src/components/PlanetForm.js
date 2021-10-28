@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap";
-import { addPlanet, updatePlanet } from "../modules/planetManager";
+import { addPlanet, getPlanetsById, updatePlanet } from "../modules/planetManager";
 import { planetTypes } from "../modules/planetTypeManager";
 import { getStars } from "../modules/starManager";
+import { getColors } from "../modules/colorManager";
 
 
 
@@ -23,8 +24,14 @@ const PlanetForm = () => {
         orbitalPeriod: "",
         starId: "",
         planetTypeId: "",
-        ColorId: "",
+        colorId: "",
     })
+
+    if (planetId.id && planet.name === "")
+    {
+        getPlanetsById(planetId.id)
+        .then(planet => setPlanet(planet))
+    }
 
     const handleInput = (event) => {
         const newPlanet = {...planet}
@@ -51,8 +58,8 @@ const PlanetForm = () => {
         .then(type => setPlanetType(type))
         .then(getStars()
         .then(star => setStar(star)))
-        // .then(getColors()
-        // .then(color => setColor(color)))
+        .then(getColors()
+        .then(color => setColor(color)))
     }, [])
 
     return (
@@ -74,7 +81,7 @@ const PlanetForm = () => {
                     <Input type="text" class="form-control" id="orbitalPeriod" placeholder ="how many days to go around sun" value={planet.orbitalPeriod} onChange={handleInput} required/>
 
                     <label for="star">Assigned Star</label>
-                    <Input type="select" name="select" id="star" value={planet.star?.name} onChange={handleInput} >
+                    <Input type="select" name="select" id="starId" value={planet.star?.name} onChange={handleInput} >
                         <option value={null}>What star does the planet belong too</option>
                         {star.map((s) => {
                             return <option value={s.id}>{s.name}</option>
@@ -89,13 +96,13 @@ const PlanetForm = () => {
                             })}
                     </Input>
                     
-                    {/* <label for="color">Color</label>
-                    <Input type="select" name="select" id="color" value={planet.ColorId} onChange={handleInput} >
-                        <option value={null}>Select a planet Type</option>
+                    <label for="color">Color</label>
+                    <Input type="select" name="select" id="colorId" value={planet.colorId} onChange={handleInput} >
+                        <option value={null}>Select a color</option>
                         {color.map((c) => {
                             return <option value={c.id}>{c.paint}</option>
                             })}
-                    </Input> */}
+                    </Input>
 
                     
                 </div>

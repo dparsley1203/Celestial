@@ -13,7 +13,7 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     
     public class PlanetController : ControllerBase
     {
@@ -33,8 +33,8 @@ namespace Celestial.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var currentUserId = GetCurrentUserProfile().Id;
-            var planet = _planetRepository.GetAll(currentUserId);
+            var currentUserId = GetCurrentUserProfile();
+            var planet = _planetRepository.GetAll(currentUserId.FireBaseId);
 
             return Ok(planet);
         }

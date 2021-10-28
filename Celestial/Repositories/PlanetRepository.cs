@@ -12,7 +12,7 @@ namespace Celestial.Repositories
     public class PlanetRepository : BaseRepository, IPlanetRepository
     {
         public PlanetRepository(IConfiguration configuration) : base(configuration) { }
-        public List<Planet> GetAll(int id)
+        public List<Planet> GetAll(string fireBaseId)
         {
             using (var conn = Connection)
             {
@@ -39,9 +39,9 @@ namespace Celestial.Repositories
                                           LEFT JOIN Color c ON c.Id = p.ColorId
                                           LEFT JOIN [User] u ON u.Id = p.UserId
 
-                                          WHERE u.Id = @Id";
+                                          WHERE u.FireBaseId = @FireBaseId";
 
-                    DbUtils.AddParameter(cmd, "@Id", id);
+                    DbUtils.AddParameter(cmd, "@FireBaseId", fireBaseId);
 
                     var reader = cmd.ExecuteReader();
                     var planets = new List<Planet>();
