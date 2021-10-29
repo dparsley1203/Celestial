@@ -33,6 +33,11 @@ namespace Celestial
             services.AddTransient<IStarRepository, StarRepository>();
             services.AddTransient<IStarTypeRepository, StarTypeRepository>();
             services.AddTransient<IStarDetailRepository, StarDetailRepository>();
+            services.AddTransient<IPlanetRepository, PlanetRepository>();
+            services.AddTransient<IPlanetTypeRepository, PlanetTypeRepository>();
+            services.AddTransient<IPlanetDetailRepository, PlanetDetailRepository>();
+            services.AddTransient<IColorRepository, ColorRepository>();
+            services.AddTransient<IMoonRepository, MoonRepository>();
 
             services.AddControllers();
             services.AddMvc().AddJsonOptions(options =>

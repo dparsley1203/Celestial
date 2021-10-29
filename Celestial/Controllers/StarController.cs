@@ -91,8 +91,6 @@ namespace Celestial.Controllers
             }
         }
 
-
-        // Returned a null object.  Attempting to 
         private User GetCurrentUserProfile()
         {
             var fireBaseId = User.FindFirstValue(ClaimTypes.NameIdentifier);

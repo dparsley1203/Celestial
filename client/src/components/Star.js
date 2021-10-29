@@ -2,25 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlueSun from "../Img/BlueSun.png";
 import YellowSun from '../Img/YellowSun.png';
+import { Planet } from "./Planet";
+import { Moon } from "./Moon";
+import "./ApplicationViews"
+import "./Pictures.css"
 
-export const Star = ({star}) => {
+//used props because we needed to pass in multiple objects into star (line 42 of StarList)
+export const Star = (props) => {
 
-    console.log(star)
     let imgtype 
-    if (star.starTypeId === 1) {
-        imgtype = <img src={BlueSun} width="200" height="100" />
+    if (props.star.starTypeId === 1) {
+        imgtype = <img src={BlueSun} width="250" height="250" />
     } else {
-        imgtype = <img src={YellowSun} width="100" height="50" />
+        imgtype = <img src={YellowSun} width="250" height="250" />
     }
     
-
+ 
     return (
-        <div>
+        <>
+        <div className="star">
             
-            <Link to={`/star/${star.id}`}>
+            <Link to={`/star/${props.star.id}`}>
                 {imgtype}
             </Link>
-            
         </div>
+        <p>{props.star.name}</p>
+
+        <div>
+            {props.planets.map(planet => <Planet planet={planet} key={planet.id} />)}
+            {props.moons.map(moon => <Moon moon={moon} key={moon.id} />)}
+        </div>
+        </>
     )
 }

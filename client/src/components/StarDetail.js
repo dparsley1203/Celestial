@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router"
 import { Col, Button } from "reactstrap";
 import { Star } from "./Star"; // not needed at the moment.  May add the star pic back later
 import { deleteStar, getStarsById } from "../modules/starManager";
-import { getStarDetailsByStarId } from "../modules/StarDetailManager";
+import { getStarDetailsByStarId } from "../modules/starDetailManager";
 
 
 export const StarDetail = () => {

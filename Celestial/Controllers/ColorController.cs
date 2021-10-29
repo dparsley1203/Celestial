@@ -10,32 +10,32 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlanetTypeController : ControllerBase
+    public class ColorController : ControllerBase
     {
-        private readonly IPlanetTypeRepository _planetTypeRepository;
+        private readonly IColorRepository _colorRepository;
 
-        public PlanetTypeController(IPlanetTypeRepository planetTypeRepository)
+        public ColorController(IColorRepository colorRepository)
         {
-            _planetTypeRepository = planetTypeRepository;
+            _colorRepository = colorRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var planetType = _planetTypeRepository.GetAll();
+            var color = _colorRepository.GetAll();
 
-            return Ok(planetType);
+            return Ok(color);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var planetType = _planetTypeRepository.GetPlanetTypeById(id);
-            if (planetType == null)
+            var color = _colorRepository.GetById(id);
+            if (color == null)
             {
                 return NotFound();
             }
-            return Ok(planetType);
+            return Ok(color);
         }
     }
 }

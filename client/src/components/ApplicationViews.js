@@ -5,6 +5,8 @@ import Register from "./Register";
 import { StarDetail } from "./StarDetail";
 import  StarForm  from "./StarForm";
 import { StarList } from "./StarList";
+import { PlanetDetail } from "./PlanetDetail";
+import  PlanetForm  from "./PlanetForm";
 
 
 const ApplicationViews = ({isLoggedIn}) => {
@@ -15,9 +17,12 @@ const ApplicationViews = ({isLoggedIn}) => {
             <Route path="/" exact>
             {isLoggedIn ? <StarList /> : <Redirect to="/login" />}
             </Route>
-            
-            
+
             <Route path="/star/create" exact>
+            {isLoggedIn ? <StarForm /> : <Redirect to="/login" />}
+            </Route>
+
+            <Route path="/star/edit/:id" exact>
             {isLoggedIn ? <StarForm /> : <Redirect to="/login" />}
             </Route>
 
@@ -25,9 +30,19 @@ const ApplicationViews = ({isLoggedIn}) => {
             {isLoggedIn ? <StarDetail /> : <Redirect to="/login" />}
             </Route>
 
-            <Route path="/star/edit/:id" exact>
-            {isLoggedIn ? <StarForm /> : <Redirect to="/login" />}
+
+            <Route path="/planet/create" exact>
+            {isLoggedIn ? <PlanetForm /> : <Redirect to="/login" />}
             </Route>
+
+            <Route path="/planet/edit/:id" exact>
+            {isLoggedIn ? <PlanetForm /> : <Redirect to="/login" />}
+            </Route>
+
+            <Route path="/planet/:id" exact>
+            {isLoggedIn ? <PlanetDetail /> : <Redirect to="/login" />}
+            </Route>
+
 
             <Route path="/login">
             <Login />
