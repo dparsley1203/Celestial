@@ -44,6 +44,7 @@ namespace Celestial.Controllers
         public IActionResult Post(PlanetDetail planetDetail)
         {
             planetDetail.UserId = GetCurrentUserProfile().Id;
+            
             try
             {
                 _planetDetailRepository.Add(planetDetail);
