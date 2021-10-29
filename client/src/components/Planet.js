@@ -8,9 +8,9 @@ export const Planet = ({planet}) => {
 
     let imgtype 
     if (planet.planetTypeId === 1) {
-        imgtype = <img src={earth} width="200" height="200" />
+        imgtype = <img src={earth} width="150" height="150" />
     } else {
-        imgtype = <img src={Redearth} width="200" height="200" />
+        imgtype = <img src={Redearth} width="150" height="150" />
     }
 
     

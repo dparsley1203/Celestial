@@ -33,12 +33,26 @@ export const getPlanetsById = (id) => {
     );    
 }
 
-export const getPlanetsBySunId = (id) => {
+// export const getPlanetsBySunId = (id) => {
 
-            return fetch(`${_apiUrl}/SolarSystem/${id}`)
+//             return fetch(`${_apiUrl}/SolarSystem/${id}`)
 
-            .then((res) => res.json())
+//             .then((res) => res.json())
         
+// }
+
+export const getPlanetsBySunId = (id) => {
+    return getToken()
+    .then((token) =>
+        fetch(`${_apiUrl}/SolarSystem/${id}`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+    );    
 }
 
 export const updatePlanet = (planet) => {

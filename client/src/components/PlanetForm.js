@@ -11,12 +11,10 @@ import { getColors } from "../modules/colorManager";
 
 const PlanetForm = () => {
 
-    const planetId = useParams();
-    const history = useHistory();
     const [ planetType, setPlanetType ] = useState([]);
     const [ star, setStar ] = useState([]);
     const [ color, setColor ] = useState([]);
-
+    
     const [ planet, setPlanet ] = useState({
         name: "",
         diameter: "",
@@ -26,6 +24,9 @@ const PlanetForm = () => {
         planetTypeId: "",
         colorId: "",
     })
+    
+    const planetId = useParams();
+    const history = useHistory();
 
     if (planetId.id && planet.name === "")
     {
@@ -72,10 +73,10 @@ const PlanetForm = () => {
                     <Input type="name" class="form-control" id="name" placeholder ="name" value={planet.name} onChange={handleInput} required/>
 
                     <label for="diameter">Diameter</label>
-                    <Input type="text" class="form-control" id="diameter" placeholder ="diameter in kilometers" value={planet.diameter} onChange={handleInput} required/>
+                    <Input type="text" class="form-control" id="diameter" placeholder ="diameter in miles" value={planet.diameter} onChange={handleInput} required/>
 
                     <label for="distanceFromStar">Distance from Star</label>
-                    <Input type="text" class="form-control" id="distanceFromStar" placeholder ="distance in kilometers" value={planet.distanceFromStar} onChange={handleInput} required/>
+                    <Input type="text" class="form-control" id="distanceFromStar" placeholder ="distance in miles" value={planet.distanceFromStar} onChange={handleInput} required/>
 
                     <label for="orbitalPeriod">Orbital Period</label>
                     <Input type="text" class="form-control" id="orbitalPeriod" placeholder ="how many days to go around sun" value={planet.orbitalPeriod} onChange={handleInput} required/>

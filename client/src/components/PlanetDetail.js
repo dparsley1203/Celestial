@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { Col, Button } from "reactstrap";
 import { getPlanetDetailsByPlanetId } from "../modules/planetDetailManager";
 import { deletePlanet, getPlanetsById } from "../modules/planetManager";
+import PlanetDetailForm from "./PlanetDetailForm";
+
 
 export const PlanetDetail = () => {
 
@@ -34,25 +37,34 @@ export const PlanetDetail = () => {
         history.push(`/planet/edit/${planet.id}`)
     }
 
-    console.log(planetDetails)
+    const planetSpeedPerDay = ((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod).toLocaleString('en-Us')
+    const planetSpeedPerHour = (((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod) / 24).toLocaleString('en-Us')
+    const milesTraveled = (planet.distanceFromStar * 2 * 3.14).toLocaleString('en-Us')
 
     return (
         <div>
+            <h1>Planet Details</h1>
             <p> Planet Name: {planet.name}</p>
-            <p> Planet Diameter: {planet.diameter}</p>
-            <p> Planet Distance from Star: {planet.distanceFromStar}</p>
-            <p> Planet Orbital Period: {planet.orbitalPeriod}</p>
-            <p> Belongs to Star: {planet.star?.name} </p>
+            <p> Planet Diameter: {planet.diameter} miles</p>
+            <p> Planet Distance from Star: {planet.distanceFromStar} miles</p>
+            <p> Planet Orbital Period: {planet.orbitalPeriod} days</p>
+            <p> Belongs to Star: {planet.star?.name}</p>
             <p> Planet Type: {planet.planetType?.type}</p>
             <p> Planet color: {planet.color?.paint}</p>
-            {/* <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes}</p>))} </div> */}
 
-                <Col>
-                    <Button onClick={handleClickDeletePlanet}color="danger">Delete</Button>
-                </Col>
-                <Col>
-                    <Button onClick={handleClickEditPlanet}color="primary">Edit</Button>
-                </Col>
+            <h2>Fun Facts about your planet</h2><br></br>
+            <p>This planet travles around its star at ~{planetSpeedPerDay} miles per day or ~{planetSpeedPerHour} mph </p>
+            <p>This planet travels ~ {milesTraveled} miles in a year</p>
+
+            <h2>Comment Section</h2>
+            <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes}</p>))} </div><br></br><br></br>
+                    <div>
+                    <PlanetDetailForm />
+                    </div><br></br>
+                    
+                    <Button onClick={handleClickDeletePlanet}color="danger">Delete Planet</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <Button onClick={handleClickEditPlanet}color="primary">Edit Planet</Button>
         </div>
+                
     )
 } 

@@ -44,14 +44,6 @@ export const StarList = () => {
                 }
                 
             </div>
-            <div>
-
-                {/* {planets.map((planet) => {
-                    
-                    const starPlanets = planets.filter(p => p.starId === star.id)
-                    return <Planet planet={starPlanets} key={planet.id} />
-                })} */}
-            </div>
         </div>
     )
 }

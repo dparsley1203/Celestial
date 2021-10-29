@@ -13,7 +13,7 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
     
     public class PlanetController : ControllerBase
     {
