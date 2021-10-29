@@ -173,7 +173,7 @@ namespace Celestial.Repositories
                 PlanetId = DbUtils.GetInt(reader, "PlanetId"),
                 Planet = new Planet()
                 {
-                    Id = DbUtils.GetInt(reader, "Id"),
+                    Id = DbUtils.GetInt(reader, "PlanetId"),
                     Name = DbUtils.GetString(reader, "PlanetName"),
                     Diameter = DbUtils.GetInt(reader, "PlanetDiameter"),
                     DistanceFromStar = DbUtils.GetInt(reader, "DistanceFromStar"),
