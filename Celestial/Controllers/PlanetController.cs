@@ -34,9 +34,9 @@ namespace Celestial.Controllers
         public IActionResult Get()
         {
             var currentUserId = GetCurrentUserProfile();
-            var planet = _planetRepository.GetAll(currentUserId.FireBaseId);
+            var planets = _planetRepository.GetAll(currentUserId.Id);
 
-            return Ok(planet);
+            return Ok(planets);
         }
 
         [HttpGet("{id}")]

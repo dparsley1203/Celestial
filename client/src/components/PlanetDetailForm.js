@@ -33,7 +33,7 @@ const PlanetDetailForm = () => {
 
         const newPlanetDetail = {
             
-            planetId: id,
+            planetId: id, // used params to get number from browser in order to save planetId to the message/detail I was looking at
             notes: planetDetail.notes
         }
         

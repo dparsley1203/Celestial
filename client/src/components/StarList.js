@@ -12,21 +12,11 @@ export const StarList = () => {
     const [ stars, setStars ] = useState([])
     const [ planets, setPlanets ] = useState([])
 
-    // const getSomeStars = () => {
-    //     getStars()
-    //     .then(stars => setStars(stars))
-    // }
-
-    // const getSomePlanets = () => {
-    //     getPlanets()
-    //     .then(planets => setPlanets(planets))
-    // }
-
     useEffect(() => {
         getStars()
         .then(stars => setStars(stars))
-        .then(getPlanets()
-        .then((planets) => setPlanets(planets)))
+        .then(getPlanets)
+        .then((planets) => setPlanets(planets))
     }, [])
 
 
@@ -37,9 +27,9 @@ export const StarList = () => {
                 {stars.map((star) =>  {
                     
                     const starPlanets = planets.filter((p) => p.starId === star.id)
-                    const map = starPlanets.map(sp => sp)
                     
-                   return <Star star={star} planet={map} key={star.id} />
+                    //passed in star object and planet array into Star component on props
+                   return <Star star={star} planets={starPlanets} key={star.id} />
                     })
                 }
                 

@@ -57,7 +57,7 @@ export const PlanetDetail = () => {
             <p>This planet travels ~ {milesTraveled} miles in a year</p>
 
             <h2>Comment Section</h2>
-            <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes}</p>))} </div><br></br><br></br>
+            <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes} <button>Edit</button><button >Delete</button></p>))} </div><br></br><br></br>
                     <div>
                     <PlanetDetailForm />
                     </div><br></br>

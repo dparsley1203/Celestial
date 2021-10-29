@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import earth from "../Img/earth.png"
 import Redearth from "../Img/Redearth.png"
 import "./Pictures.css"
+
 export const Planet = ({planet}) => {
 
 

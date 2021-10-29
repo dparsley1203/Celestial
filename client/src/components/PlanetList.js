@@ -1,58 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { Planet } from "./Planet";
-import { getPlanets, getPlanetsBySunId } from "../modules/planetManager";
-import { getStars } from "../modules/starManager";
-import { useParams } from "react-router";
-
-export const PlanetList = () => {
-
-    const [ planets, setPlanets ] = useState([])
-    const [ stars, setStars ] = useState([])
-    const { id } = useParams();
-
-    // const getSomePlanets = () => {
-    //     getPlanets()
-    //     .then(planets => setPlanets(planets))
-    // }
+// Planet list is no longer needed.  Used Star list
 
 
-    useEffect(() => {
-        getPlanets()
-        .then(planets => setPlanets(planets))
-        .then(getStars()
-        .then(stars => setStars(stars)))
-    }, [])
+// import React, { useEffect, useState } from "react";
+// import { Planet } from "./Planet";
+// import { getPlanets, getPlanetsBySunId } from "../modules/planetManager";
+// import { getStars } from "../modules/starManager";
+// import { useParams } from "react-router";
 
-    // useEffect(() => {
-    //     getPlanetsBySunId(id)
-    //     .then(planets => setPlanets(planets))
-    //     .then(getStars()
-    //     .then(stars => setStars(stars)))
-    // }, [])
+// export const PlanetList = () => {
 
-    console.log(stars)
-    console.log(planets)
+//     const [ planets, setPlanets ] = useState([])
+//     const [ stars, setStars ] = useState([])
+//     const { id } = useParams();
 
-    return (
-        <div>
-            <div>
-                {
-                    planets.map(planet => (
-                        <Planet planet={planet} key={planet.id} />
-                    ))
-                }
-            </div>
-        </div>
-    )
-}
+//     // const getSomePlanets = () => {
+//     //     getPlanets()
+//     //     .then(planets => setPlanets(planets))
+//     // }
 
 
-// {planets.map(planet => (
-//     <Planet planet={planet} key={planet.id} />
-// ))}
+//     useEffect(() => {
+//         getPlanets()
+//         .then(planets => setPlanets(planets))
+//         .then(getStars()
+//         .then(stars => setStars(stars)))
+//     }, [])
 
-// planets.filter((planet) => {
-//     return planet.starId === stars.id
-// }).map(planet => {
-//     return <Planet planet={planet} key={planet.id} />
-// })
+//     // useEffect(() => {
+//     //     getPlanetsBySunId(id)
+//     //     .then(planets => setPlanets(planets))
+//     //     .then(getStars()
+//     //     .then(stars => setStars(stars)))
+//     // }, [])
+
+//     console.log(stars)
+//     console.log(planets)
+
+//     return (
+//         <div>
+//             <div>
+//                 {
+//                     planets.map(planet => (
+//                         <Planet planet={planet} key={planet.id} />
+//                     ))
+//                 }
+//             </div>
+//         </div>
+//     )
+// }
+
+
+// // {planets.map(planet => (
+// //     <Planet planet={planet} key={planet.id} />
+// // ))}
+
+// // planets.filter((planet) => {
+// //     return planet.starId === stars.id
+// // }).map(planet => {
+// //     return <Planet planet={planet} key={planet.id} />
+// // })
