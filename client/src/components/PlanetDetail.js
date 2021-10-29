@@ -21,7 +21,7 @@ export const PlanetDetail = () => {
     useEffect(() => {
         getPlanetsById(id)
         .then(setPlanet)
-        .then(getPlanetDetails())
+        .then(getPlanetDetails)
     }, [])
 
     const handleClickDeletePlanet = () => {
@@ -35,6 +35,10 @@ export const PlanetDetail = () => {
 
     const handleClickEditPlanet = () => {
         history.push(`/planet/edit/${planet.id}`)
+    }
+
+    const handleClickedEditNote = () => {
+        
     }
 
     const planetSpeedPerDay = ((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod).toLocaleString('en-Us')
@@ -59,7 +63,7 @@ export const PlanetDetail = () => {
             <h2>Comment Section</h2>
             <div className="container">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: {pd.notes} <button>Edit</button><button >Delete</button></p>))} </div><br></br><br></br>
                     <div>
-                    <PlanetDetailForm />
+                        <PlanetDetailForm />
                     </div><br></br>
                     
                     <Button onClick={handleClickDeletePlanet}color="danger">Delete Planet</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

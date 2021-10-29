@@ -30,7 +30,6 @@ const PlanetDetailForm = () => {
 
     const handleCreatePlanetDetail = () => {
 
-
         const newPlanetDetail = {
             
             planetId: id, // used params to get number from browser in order to save planetId to the message/detail I was looking at
@@ -38,7 +37,7 @@ const PlanetDetailForm = () => {
         }
         
         addPlanetDetail(newPlanetDetail)
-        .then(history.push(`/planet/${id}`))
+        .then(() => history.push(`/planet/${id}`))
         
     }
 
@@ -66,9 +65,9 @@ const PlanetDetailForm = () => {
 
                     </div>
                     : */}
-                    <button type="submit" class="btn btn-primary" onClick={() => {
-                        handleCreatePlanetDetail()
-                    }}>Add</button>
+                    <button type="submit" class="btn btn-primary" onClick={
+                        handleCreatePlanetDetail
+                    }>Add</button>
                     {/* } */}
                 </div>
             </div>

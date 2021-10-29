@@ -9,7 +9,7 @@ namespace Celestial.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int diameter { get; set; }
+        public int Diameter { get; set; }
         public int DistanceFromPlanet { get; set; }
         public int OrbitalPeriod { get; set; }
         public int MoonTypeId { get; set; }

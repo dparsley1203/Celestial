@@ -42,9 +42,7 @@ namespace Celestial.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var currentUserId = GetCurrentUserProfile().Id;
             var planet = _planetRepository.GetPlanetById(id);
-            var details = _planetDetailRepository.GetDetailsByPlanetId(id);
 
             if (planet == null)
             {
@@ -53,6 +51,7 @@ namespace Celestial.Controllers
             return Ok(planet);
         }
 
+        //Not being used at the moment
         [HttpGet("SolarSystem/{id}")]
         public IActionResult GetPlanetsByStar(int id)
         {

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlueSun from "../Img/BlueSun.png";
 import YellowSun from '../Img/YellowSun.png';
-import { PlanetList } from "./PlanetList";
 import { Planet } from "./Planet";
+import { Moon } from "./Moon";
 import "./ApplicationViews"
 import "./Pictures.css"
 
@@ -30,9 +30,8 @@ export const Star = (props) => {
 
         <div>
             {props.planets.map(planet => <Planet planet={planet} key={planet.id} />)}
-
+            {props.moons.map(moon => <Moon moon={moon} key={moon.id} />)}
         </div>
-
         </>
     )
 }

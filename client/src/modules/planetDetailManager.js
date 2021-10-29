@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
 import { getToken } from './authManager';
+import { getPlanetsById } from './planetManager';
 
 const _apiUrl = "/api/planetDetail"
 
@@ -60,6 +61,6 @@ export const addPlanetDetail = (planetDetail) => {
             },
             body: JSON.stringify(planetDetail),
         })
-        .then(getPlanetDetails())
+        .then(getPlanetsById(planetDetail))
     );
 }

@@ -2,9 +2,9 @@ import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
 import { getToken } from './authManager';
 
-const _apiUrl = "/api/planet";
+const _apiUrl = "/api/moon"
 
-export const getPlanets = () => {
+export const getAllMoonsByUserId = () => {
     return getToken()
         .then(
             (token) =>
@@ -19,7 +19,7 @@ export const getPlanets = () => {
         );
 }
 
-export const getPlanetsById = (id) => {
+export const getMoonssById = (id) => {
     return getToken()
     .then((token) =>
         fetch(`${_apiUrl}/${id}`, {
@@ -33,21 +33,7 @@ export const getPlanetsById = (id) => {
     );    
 }
 
-export const getPlanetsBySunId = (id) => {
-    return getToken()
-    .then((token) =>
-        fetch(`${_apiUrl}/SolarSystem/${id}`, {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-    );    
-}
-
-export const updatePlanet = (planet) => {
+export const updateMoon = (moon) => {
     return getToken()
     .then((token) => 
         fetch(_apiUrl, {
@@ -56,15 +42,15 @@ export const updatePlanet = (planet) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(planet),
+            body: JSON.stringify(moon),
         })
     );
 }
 
-export const deletePlanet = (planet) => {
+export const deleteMoon = (moon) => {
     return getToken()
     .then((token) => 
-        fetch(`${_apiUrl}/${planet.id}`, {
+        fetch(`${_apiUrl}/${moon.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -73,7 +59,7 @@ export const deletePlanet = (planet) => {
     );
 }
 
-export const addPlanet = (planet) => {
+export const addMoon = (moon) => {
     return getToken()
     .then((token) =>
         fetch(_apiUrl, {
@@ -82,8 +68,8 @@ export const addPlanet = (planet) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(planet),
+            body: JSON.stringify(moon),
         })
-        .then(getPlanets())
+        .then(getAllMoonsByUserId ())
     );
 }

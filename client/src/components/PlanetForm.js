@@ -57,10 +57,10 @@ const PlanetForm = () => {
     useEffect(() => {
         planetTypes()
         .then(type => setPlanetType(type))
-        .then(getStars()
-        .then(star => setStar(star)))
-        .then(getColors()
-        .then(color => setColor(color)))
+        .then(getStars)
+        .then(star => setStar(star))
+        .then(getColors)
+        .then(color => setColor(color))
     }, [])
 
     return (
