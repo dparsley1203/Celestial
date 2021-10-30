@@ -12,42 +12,42 @@ namespace Celestial.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlanetDetailController : ControllerBase
+    public class MoonDetailController : ControllerBase
     {
-        private readonly IPlanetDetailRepository _planetDetailRepository;
+        private readonly IMoonDetailRepository _moonDetailRepository;
         private readonly IUserRepository _userRepository;
-        public PlanetDetailController(IPlanetDetailRepository planetDetailRepository, IUserRepository userRepository)
+
+        public MoonDetailController(IMoonDetailRepository moonDetailRepository, IUserRepository userRepository)
         {
-            _planetDetailRepository = planetDetailRepository;
+            _moonDetailRepository = moonDetailRepository;
             _userRepository = userRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var currentUserId = GetCurrentUserProfile();
-            var planetDetail = _planetDetailRepository.GetAll();
+            var moonDetails = _moonDetailRepository.GetAll();
 
-            return Ok(planetDetail);
+            return Ok(moonDetails);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var planetDetails = _planetDetailRepository.GetDetailsByPlanetId(id);
+            var moonDetails = _moonDetailRepository.GetMoonDetailByMoonId(id);
 
-            return Ok(planetDetails);
+            return Ok(moonDetails);
         }
 
         [HttpPost]
-        public IActionResult Post(PlanetDetail planetDetail)
+        public IActionResult Post(MoonDetail moonDetail)
         {
-            planetDetail.UserId = GetCurrentUserProfile().Id;
-            
+            moonDetail.UserId = GetCurrentUserProfile().Id;
+
             try
             {
-                _planetDetailRepository.Add(planetDetail);
-                return CreatedAtAction("Get", new { id = planetDetail.Id }, planetDetail);
+                _moonDetailRepository.Add(moonDetail);
+                return CreatedAtAction("Get", new { id = moonDetail.Id }, moonDetail);
             }
             catch
             {
@@ -58,19 +58,20 @@ namespace Celestial.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _planetDetailRepository.Delete(id);
+            _moonDetailRepository.Delete(id);
             return NoContent();
         }
 
+
         [HttpPut]
-        public IActionResult Update(PlanetDetail planetDetail)
+        public IActionResult Update(MoonDetail moonDetail)
         {
 
             try
             {
-                _planetDetailRepository.Update(planetDetail);
+                _moonDetailRepository.Update(moonDetail);
 
-                return Ok(planetDetail);
+                return Ok(moonDetail);
             }
             catch
             {
@@ -84,5 +85,4 @@ namespace Celestial.Controllers
             return _userRepository.GetByFireBaseId(fireBaseId);
         }
     }
-
 }

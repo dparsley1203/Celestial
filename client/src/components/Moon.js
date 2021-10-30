@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import FullMoon from "../Img/FullMoon.png"
+import WaxingMoon from "../Img/WaxingMoon.png"
 
 export const Moon = ({moon}) => {
 
@@ -8,7 +9,7 @@ export const Moon = ({moon}) => {
     if (moon.moonTypeId === 1) {
         imgtype = <img src={FullMoon} width="50" height="50" />
     } else {
-        imgtype = <img src={FullMoon} width="50" height="50" shadow="0px, 16px" />
+        imgtype = <img src={WaxingMoon} width="50" height="50" shadow="0px, 16px" />
     }
 
     console.log(moon)
