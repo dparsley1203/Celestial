@@ -7,8 +7,6 @@ import { getStars } from "../modules/starManager";
 import { getColors } from "../modules/colorManager";
 
 
-
-
 const PlanetForm = () => {
 
     const [ planetType, setPlanetType ] = useState([]);
