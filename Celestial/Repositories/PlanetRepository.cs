@@ -182,6 +182,7 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Planet WHERE Id = @Id";
+                    //unable to delete due to FK
                     DbUtils.AddParameter(cmd, "@Id", id);
                     cmd.ExecuteNonQuery();
                 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Container, Input } from "reactstrap";
 import { useHistory, useParams } from "react-router"
-import { addPlanetDetail } from "../modules/planetDetailManager";
+import { addPlanetDetail, updatePlanetDetail } from "../modules/planetDetailManager";
 import { getPlanets, getPlanetsById } from "../modules/planetManager";
 
 
@@ -41,6 +41,15 @@ const PlanetDetailForm = () => {
         
     }
 
+    const handleUpdatePlanetDetail = () => {
+        updatePlanetDetail(planet)
+        .then(history.push(`/planet/${planet.id}`))
+    }
+
+    const handleClickCancel = () => {
+        history.push(`/planet/${planet.id}`)
+    }
+
 
     return (
         <Container>
@@ -52,11 +61,11 @@ const PlanetDetailForm = () => {
                     <Input type="textarea" class="form-control" id="notes" placeholder ="notes" value={planetDetail.notes} onChange={handleInput} required/>
  
                 </div>
-{/* 
-                    {planetId.id? 
+
+                    {planet.id? 
                     <div>
                         <button type="submit" class="btn btn-primary mr-3" onClick={
-                            handleUpdatePlanet
+                            handleUpdatePlanetDetail
                         }>Update</button>
 
                         <button type="cancel" class="btn btn-primary mx-3" onClick={() => {
@@ -64,11 +73,11 @@ const PlanetDetailForm = () => {
                         }}>Cancel</button>
 
                     </div>
-                    : */}
+                    :
                     <button type="submit" class="btn btn-primary" onClick={
                         handleCreatePlanetDetail
                     }>Add</button>
-                    {/* } */}
+                  }
                 </div>
             </div>
         </Container>

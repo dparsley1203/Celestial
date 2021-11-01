@@ -8,7 +8,8 @@ import { StarList } from "./StarList";
 import { PlanetDetail } from "./PlanetDetail";
 import  PlanetForm  from "./PlanetForm";
 import { MoonDetail } from "./MoonDetail";
-import { MoonForm } from "./MoonForm";
+import  MoonForm  from "./MoonForm";
+import PlanetDetailForm from "./PlanetDetailForm";
 
 
 const ApplicationViews = ({isLoggedIn}) => {
@@ -40,12 +41,12 @@ const ApplicationViews = ({isLoggedIn}) => {
             {isLoggedIn ? <PlanetForm /> : <Redirect to="/login" />}
             </Route>
 
-            <Route path="/planet/:id" exact>
-            {isLoggedIn ? <PlanetDetail /> : <Redirect to="/login" />}
+            <Route path="/planet/notes/:id" exact>
+            {isLoggedIn ? <PlanetDetailForm /> : <Redirect to="/login" />}
             </Route>
 
-            <Route path="/moon/:id" exact>
-            {isLoggedIn ? <MoonDetail /> : <Redirect to="/login" />}
+            <Route path="/planet/:id" exact>
+            {isLoggedIn ? <PlanetDetail /> : <Redirect to="/login" />}
             </Route>
 
             <Route path="/moon/create" exact>
@@ -56,6 +57,9 @@ const ApplicationViews = ({isLoggedIn}) => {
             {isLoggedIn ? <MoonForm /> : <Redirect to="/login" />}
             </Route>
 
+            <Route path="/moon/:id" exact>
+            {isLoggedIn ? <MoonDetail /> : <Redirect to="/login" />}
+            </Route>
 
             <Route path="/login">
             <Login />

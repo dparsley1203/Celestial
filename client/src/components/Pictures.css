@@ -2,11 +2,6 @@ img {
     border-radius: 50%;
 }
 
-.star {
-    display: flex;
-    flex: wrap;
-}
-
 .moon {
     background-color: #222;
     width: 50px;

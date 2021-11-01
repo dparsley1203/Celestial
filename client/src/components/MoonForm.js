@@ -6,7 +6,7 @@ import { moonTypes } from "../modules/moonTypeManager";
 import { getPlanets } from "../modules/planetManager";
 
 
-export const MoonForm = () => {
+const MoonForm = () => {
 
     const [ moonType, setMoonType ] = useState([]);
     const [ planet, setPlanet ] = useState([]);
@@ -114,3 +114,5 @@ export const MoonForm = () => {
         </Container>
     )
 }
+
+export default MoonForm
