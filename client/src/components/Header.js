@@ -11,12 +11,17 @@ const Header = () => {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <Link to="/star/create" className="nav-link">
-            New Star
+            Create a Star
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/planet/create" className="nav-link">
-            New Planet
+            Create a Planet
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/moon/create" className="nav-link">
+            Create a Moon
           </Link>
         </li>
         <li className="nav-item">

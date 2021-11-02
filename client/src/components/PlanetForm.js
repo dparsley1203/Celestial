@@ -7,8 +7,6 @@ import { getStars } from "../modules/starManager";
 import { getColors } from "../modules/colorManager";
 
 
-
-
 const PlanetForm = () => {
 
     const [ planetType, setPlanetType ] = useState([]);
@@ -110,8 +108,8 @@ const PlanetForm = () => {
 
                     {planetId.id? 
                     <div>
-                        <button type="submit" class="btn btn-primary mr-3" onClick={
-                            handleUpdatePlanet
+                        <button type="submit" class="btn btn-primary mr-3" onClick={() =>
+                            handleUpdatePlanet()
                         }>Update</button>
 
                         <button type="cancel" class="btn btn-primary mx-3" onClick={() => {

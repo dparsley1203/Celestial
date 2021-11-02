@@ -104,8 +104,8 @@ namespace Celestial.Repositories
                     cmd.CommandText = @"INSERT INTO Moon (Name, Diameter, DistanceFromPlanet, OrbitalPeriod, 
                                         PlanetId, MoonTypeId, UserId)
                                         OUTPUT Inserted.Id
-                                        VALUES (@name, @diameter, @distanceFromStar, @orbitalPeriod, 
-                                        @moonId, @moonTypeId, @userId)";
+                                        VALUES (@name, @diameter, @distanceFromPlanet, @orbitalPeriod, 
+                                        @planetId, @moonTypeId, @userId)";
 
                     DbUtils.AddParameter(cmd, "@name", moon.Name);
                     DbUtils.AddParameter(cmd, "@diameter", moon.Diameter);
@@ -128,6 +128,7 @@ namespace Celestial.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Moon WHERE Id = @Id";
+                    //unable to delete due to FK
                     DbUtils.AddParameter(cmd, "@Id", id);
                     cmd.ExecuteNonQuery();
                 }

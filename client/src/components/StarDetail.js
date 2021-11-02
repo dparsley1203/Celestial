@@ -36,15 +36,29 @@ export const StarDetail = () => {
         history.push(`/star/edit/${star.id}`)
     }
     
+    const kelvingToFahrenheit = ((star.temperature - 273.15) * 9/5 + 32)
+
+    const diameterFacts = (star.diameter * 3.14 / 4).toLocaleString()
+    const starMassFact = (star.mass * 333000).toLocaleString()
+    const starHeatFact = (kelvingToFahrenheit / 2200).toLocaleString()
 
     return (
         <div>
             <p>Star Name: {star.name}</p>
             <p>Star Diameter: {star.diameter} km</p>
             <p>Star Mass: {star.mass} Solor Mass</p>
-            <p>Star Temperature: {star.temperature} K</p>
+            <p>Star Surface Temperature: {star.temperature} K</p>
             <p>Star Type: {star.starType?.type}</p>
             <p>Star Detail: {star.starType?.details}</p>
+
+        <section>
+            <h2>Fun Facts about your Star!</h2><br></br>
+            <p>If you walked the entire circomfrence of the star it would take about {diameterFacts} hours</p>
+            <p>This star contains {starMassFact} times more mass than Earth</p>
+            <p>This star is about {starHeatFact}x hotter than the hottest lava on earth</p>
+        </section>
+
+        <h2>Comment Section</h2>
             <div className="container">{starDetails?.map((sd) => (<p> {sd.user.userName}: {sd.notes}</p>))} </div>
 
             <Col>

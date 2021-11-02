@@ -2,24 +2,14 @@ import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
 import { getToken } from './authManager';
 
-const _apiUrl = "/api/moon"
+const _apiUrl = "/api/moonDetail"
 
-export const getAllMoonsByUserId = () => {
-    return getToken()
-        .then(
-            (token) =>
-            fetch(_apiUrl, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            })
-            .then((res) => res.json())
-        );
+export const getMoonDetails = () => {
+    return fetch(_apiUrl)
+    .then(res => res.json())
 }
 
-export const getMoonsById = (id) => {
+export const getMoonDetailsByMoonId = (id) => {
     return getToken()
     .then((token) =>
         fetch(`${_apiUrl}/${id}`, {
@@ -33,7 +23,7 @@ export const getMoonsById = (id) => {
     );    
 }
 
-export const updateMoon = (moon) => {
+export const updateMoonDetail = (detail) => {
     return getToken()
     .then((token) => 
         fetch(_apiUrl, {
@@ -42,15 +32,15 @@ export const updateMoon = (moon) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(moon),
+            body: JSON.stringify(detail),
         })
     );
 }
 
-export const deleteMoon = (moon) => {
+export const deleteMoonDetail = (moonDetail) => {
     return getToken()
     .then((token) => 
-        fetch(`${_apiUrl}/${moon.id}`, {
+        fetch(`${_apiUrl}/${moonDetail.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -59,7 +49,7 @@ export const deleteMoon = (moon) => {
     );
 }
 
-export const addMoon = (moon) => {
+export const addMoonDetail = (moonDetail) => {
     return getToken()
     .then((token) =>
         fetch(_apiUrl, {
@@ -68,8 +58,8 @@ export const addMoon = (moon) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(moon),
+            body: JSON.stringify(moonDetail),
         })
-        .then(getAllMoonsByUserId ())
+        .then(getMoonDetails())
     );
 }

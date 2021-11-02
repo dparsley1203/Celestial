@@ -61,6 +61,6 @@ export const addPlanetDetail = (planetDetail) => {
             },
             body: JSON.stringify(planetDetail),
         })
-        .then(getPlanetsById(planetDetail))
+        .then(getPlanetDetails())
     );
 }

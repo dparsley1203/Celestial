@@ -38,6 +38,8 @@ namespace Celestial
             services.AddTransient<IPlanetDetailRepository, PlanetDetailRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
             services.AddTransient<IMoonRepository, MoonRepository>();
+            services.AddTransient<IMoonTypeRepository, MoonTypeRepository>();
+            services.AddTransient<IMoonDetailRepository, MoonDetailRepository>();
 
             services.AddControllers();
             services.AddMvc().AddJsonOptions(options =>

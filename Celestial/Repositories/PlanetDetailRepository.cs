@@ -26,10 +26,11 @@ namespace Celestial.Repositories
                                         u.Id, u.UserName, u.Email
                                         
                                         FROM PlanetDetail pd
-                                        LEFT JOIN Planet p ON p.Id = pd.PlanetId
-                                        LEFT JOIN [User] u On u.Id = pd.UserId";
 
-                    /*DbUtils.AddParameter(cmd, "@FireBaseId", fireBaseId);*/
+                                        LEFT JOIN Planet p ON p.Id = pd.PlanetId
+                                        LEFT JOIN [User] u ON u.Id = pd.UserId";
+
+                    
                     var reader = cmd.ExecuteReader();
                     var planetDetails = new List<PlanetDetail>();
                     while (reader.Read())

@@ -22,6 +22,7 @@ function App() {
     <div className="App">
       <Router>
       <Header isLoggedIn={isLoggedIn} />
+      <h1>Build your Solar System</h1>
         <ApplicationViews isLoggedIn={isLoggedIn} />
       </Router>
     </div>
