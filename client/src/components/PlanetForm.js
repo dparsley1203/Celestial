@@ -22,6 +22,11 @@ const PlanetForm = () => {
         planetTypeId: "",
         colorId: "",
     })
+
+    const [ planetDetail, setPlanetDetail ] = useState({
+        planetId: "",
+        notes: "",
+    })
     
     const planetId = useParams();
     const history = useHistory();
@@ -60,6 +65,7 @@ const PlanetForm = () => {
         .then(getColors)
         .then(color => setColor(color))
     }, [])
+    
 
     return (
         <Container>

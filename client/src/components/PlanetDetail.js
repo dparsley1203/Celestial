@@ -5,6 +5,7 @@ import { Col, Button } from "reactstrap";
 import { getPlanetDetailsByPlanetId } from "../modules/planetDetailManager";
 import { deletePlanet, getPlanetsById } from "../modules/planetManager";
 import PlanetDetailForm from "./PlanetDetailForm";
+import { updatePlanetDetail } from "../modules/planetDetailManager";
 
 
 export const PlanetDetail = () => {
@@ -37,10 +38,10 @@ export const PlanetDetail = () => {
         history.push(`/planet/edit/${planet.id}`)
     }
 
-    //Not yet added
-    // const handleClickedEditNote = () => {
-
-    // }
+    const handleUpdatePlanetDetail = () => {
+        updatePlanetDetail(planet)
+        .then(history.push(`/planet/${planet.id}`))
+    }
 
     const planetSpeedPerDay = ((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod).toLocaleString('en-Us')
     const planetSpeedPerHour = (((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod) / 24).toLocaleString('en-Us')
@@ -69,7 +70,7 @@ export const PlanetDetail = () => {
 
             <div id="secondary">
                 <h2>Comments</h2>
-                <section className="commentSection">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: <Link to={`/planet/notes/${id}`}>{pd.notes}</Link></p>))} </section><br></br><br></br>
+                <section className="commentSection">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: <Link to={`/planet/notes/${pd.id}`}>{pd.notes}</Link></p>))} </section><br></br><br></br>
             </div>
                         <div id="footer">
                             <PlanetDetailForm />
