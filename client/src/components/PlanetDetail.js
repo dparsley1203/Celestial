@@ -68,13 +68,13 @@ export const PlanetDetail = () => {
                 <p>If you walked the entire circomfrence of the planet it would take about {diameterFacts} hours</p>
             </div>
 
-            <div id="secondary">
+            {/* <div id="secondary">
                 <h2>Comments</h2>
                 <section className="commentSection">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: <Link to={`/planet/notes/${pd.id}`}>{pd.notes}</Link></p>))} </section><br></br><br></br>
             </div>
                         <div id="footer">
                             <PlanetDetailForm />
-                        </div><br></br>
+                        </div><br></br> */}
                         
                         <Button onClick={handleClickDeletePlanet}color="danger">Delete Planet</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Button onClick={handleClickEditPlanet}color="primary">Edit Planet</Button>

@@ -9,13 +9,13 @@ namespace Celestial.Models
     public class Moon
     {
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
-       
+        [Required]
         public int Diameter { get; set; }
-      
+        [Required]
         public int DistanceFromPlanet { get; set; }
-      
+        [Required]
         public int OrbitalPeriod { get; set; }
         public int MoonTypeId { get; set; }
         public MoonType MoonType{get; set;}

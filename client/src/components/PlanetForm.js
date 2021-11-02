@@ -86,7 +86,7 @@ const PlanetForm = () => {
                     <Input type="text" class="form-control" id="orbitalPeriod" placeholder ="how many days to go around sun" value={planet.orbitalPeriod} onChange={handleInput} required/>
 
                     <label for="star">Assigned Star</label>
-                    <Input type="select" name="select" id="starId" value={planet.star?.name} onChange={handleInput} >
+                    <Input type="select" name="select" id="starId" value={planet.starId} onChange={handleInput} >
                         <option value={null}>What star does the planet belong too</option>
                         {star.map((s) => {
                             return <option value={s.id}>{s.name}</option>

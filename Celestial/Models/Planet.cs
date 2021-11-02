@@ -9,13 +9,13 @@ namespace Celestial.Models
     public class Planet
     {
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
-
+        [Required]
         public int Diameter { get; set; }
-
+        [Required]
         public int DistanceFromStar { get; set; }
-
+        [Required]
         public int OrbitalPeriod { get; set; }
         public int StarId { get; set; }
         public Star Star { get; set; }

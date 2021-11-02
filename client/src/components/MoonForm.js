@@ -76,7 +76,7 @@ const MoonForm = () => {
                     <Input type="text" class="form-control" id="orbitalPeriod" placeholder ="how many days to go around planet" value={moon.orbitalPeriod} onChange={handleInput} required/>
 
                     <label for="star">Assigned Planet</label>
-                    <Input type="select" name="select" id="planetId" value={moon.planet?.name} onChange={handleInput} >
+                    <Input type="select" name="select" id="planetId" value={moon.planetId} onChange={handleInput} >
                         <option value={null}>What planet does the moon belong too</option>
                         {planet.map((p) => {
                             return <option value={p.id}>{p.name}</option>
