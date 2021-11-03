@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
-import { Col, Button } from "reactstrap";
+import {  Button } from "reactstrap";
 import { getPlanetDetailsByPlanetId } from "../modules/planetDetailManager";
 import { deletePlanet, getPlanetsById } from "../modules/planetManager";
-import PlanetDetailForm from "./PlanetDetailForm";
 import { updatePlanetDetail } from "../modules/planetDetailManager";
 
 
@@ -26,7 +24,7 @@ export const PlanetDetail = () => {
     }, [])
 
     const handleClickDeletePlanet = () => {
-        const confirm = window.confirm("Are you sure you want to delete this star?")
+        const confirm = window.confirm("Are you sure you want to delete this planet?")
         if(confirm == true)
         {deletePlanet(planet)
         .then(planets => setPlanet(planets))
@@ -67,14 +65,6 @@ export const PlanetDetail = () => {
                 <p>This planet travels ~ {milesTraveled} miles in a year</p>
                 <p>If you walked the entire circomfrence of the planet it would take about {diameterFacts} hours</p>
             </div>
-
-            {/* <div id="secondary">
-                <h2>Comments</h2>
-                <section className="commentSection">{planetDetails?.map((pd) => (<p> {pd?.user?.userName}: <Link to={`/planet/notes/${pd.id}`}>{pd.notes}</Link></p>))} </section><br></br><br></br>
-            </div>
-                        <div id="footer">
-                            <PlanetDetailForm />
-                        </div><br></br> */}
                         
                         <Button onClick={handleClickDeletePlanet}color="danger">Delete Planet</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Button onClick={handleClickEditPlanet}color="primary">Edit Planet</Button>

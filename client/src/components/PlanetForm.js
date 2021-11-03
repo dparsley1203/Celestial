@@ -24,10 +24,6 @@ const PlanetForm = () => {
         colorId: "",
     })
 
-    const [ planetDetail, setPlanetDetail ] = useState({
-        planetId: "",
-        notes: "",
-    })
     
     const planetId = useParams();
     const history = useHistory();
@@ -74,6 +70,8 @@ const PlanetForm = () => {
         } else {
 
         updatePlanet(planet)
+        .then(getPlanetsById(planetId.id))
+        .then(planet => setPlanet(planet))
         .then(history.push(`/planet/${planetId.id}`))
         }
     }
@@ -112,7 +110,7 @@ const PlanetForm = () => {
 
                     <label for="star">Assigned Star</label>
                     <Input type="select" name="select" id="starId" value={planet.starId} onChange={handleInput} >
-                        <option value={null}>What star does the planet belong too</option>
+                        <option value={null}>What star does the planet belong to</option>
                         {star.map((s) => {
                             return <option value={s.id}>{s.name}</option>
                             })}

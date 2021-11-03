@@ -103,7 +103,7 @@ const MoonForm = () => {
 
                     <label for="star">Assigned Planet</label>
                     <Input type="select" name="select" id="planetId" value={moon.planetId} onChange={handleInput} >
-                        <option value={null}>What planet does the moon belong too</option>
+                        <option value={null}>What planet does the moon belong to</option>
                         {planet.map((p) => {
                             return <option value={p.id}>{p.name}</option>
                             })}
