@@ -43,30 +43,31 @@ export const StarDetail = () => {
     const starHeatFact = (kelvingToFahrenheit / 2200).toLocaleString()
 
     return (
-        <div>
-            <p>Star Name: {star.name}</p>
-            <p>Star Diameter: {star.diameter} km</p>
-            <p>Star Mass: {star.mass} Solor Mass</p>
-            <p>Star Surface Temperature: {star.temperature} K</p>
-            <p>Star Type: {star.starType?.type}</p>
-            <p>Star Detail: {star.starType?.details}</p>
+        <div id="container">
+            <div id="primary">
+                <h1>Star Details</h1>
+                <p>Star Name: {star.name}</p>
+                <p>Star Diameter: {star.diameter} km</p>
+                <p>Star Mass: {star.mass} Solor Mass</p>
+                <p>Star Surface Temperature: {star.temperature} K</p>
+                <p>Star Type: {star.starType?.type}</p>
+                <p>Star Detail: {star.starType?.details}</p>
+            </div>
 
-        <section>
+        <div id="content">
             <h2>Fun Facts about your Star!</h2><br></br>
             <p>If you walked the entire circomfrence of the star it would take about {diameterFacts} hours</p>
             <p>This star contains {starMassFact} times more mass than Earth</p>
             <p>This star is about {starHeatFact}x hotter than the hottest lava on earth</p>
-        </section>
+        </div>
 
-        <h2>Comment Section</h2>
-            <div className="container">{starDetails?.map((sd) => (<p> {sd.user.userName}: {sd.notes}</p>))} </div>
+        {/* <h2>Comment Section</h2>
+            <div className="container">{starDetails?.map((sd) => (<p> {sd.user.userName}: {sd.notes}</p>))} </div> */}
 
-            <Col>
-                <Button onClick={handleClickDeleteStar}color="danger">Delete</Button>
-            </Col>
-            <Col>
+
+                <Button onClick={handleClickDeleteStar}color="danger">Delete</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Button onClick={handleClickEditStar}color="primary">Edit</Button>
-            </Col>
+
       </div>
     );
 } 

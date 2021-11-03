@@ -21,6 +21,7 @@ export const StarList = () => {
     return (
         <div className="star">
             <div>
+                <h1>Solar System</h1>
                 
                 {stars.map((star) =>  {
                     

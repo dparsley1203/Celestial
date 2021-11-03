@@ -29,20 +29,14 @@ div {
 }
 
 #primary {
-    float: left;
-    width: 240px;
     color: rgb(230, 230, 98);
 }
 
 #content {
-    float: left;
-    width: 480px;
     color: rgb(92, 161, 240);
 }
 
 #secondary {
-    float: left;
-    width: 240px;
     color: rgb(230, 175, 230);
 }
 

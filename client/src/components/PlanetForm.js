@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap";
+import Swal from "sweetalert2"
 import { addPlanet, getPlanetsById, updatePlanet } from "../modules/planetManager";
 import { planetTypes } from "../modules/planetTypeManager";
 import { getStars } from "../modules/starManager";
@@ -22,6 +23,11 @@ const PlanetForm = () => {
         planetTypeId: "",
         colorId: "",
     })
+
+    const [ planetDetail, setPlanetDetail ] = useState({
+        planetId: "",
+        notes: "",
+    })
     
     const planetId = useParams();
     const history = useHistory();
@@ -39,13 +45,37 @@ const PlanetForm = () => {
     }
 
     const handleCreatePlanet = () => {
+
+        if (planet.name === 0 || planet.diameter === 0 || planet.distanceFromStar === 0 || planet.orbitalPeriod === 0 || planet.starId === 0 || planet.planetTypeId === 0 || planet.colorId === 0  ||
+            planet.name === "" || planet.diameter === "" || planet.distanceFromStar === "" || planet.orbitalPeriod === "" || planet.temperature === "" || planet.starId === "" || planet.planetTypeId === "" || planet.colorId === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+          }).then(history.push('/planet/create'))
+        } else {
+
         addPlanet(planet)
         .then(history.push('/'))
+        }
     }
 
     const handleUpdatePlanet = () => {
+
+        if (planet.name === 0 || planet.diameter === 0 || planet.distanceFromStar === 0 || planet.orbitalPeriod === 0 || planet.starId === 0 || planet.planetTypeId === 0 || planet.colorId === 0  ||
+            planet.name === "" || planet.diameter === "" || planet.distanceFromStar === "" || planet.orbitalPeriod === "" || planet.temperature === "" || planet.starId === "" || planet.planetTypeId === "" || planet.colorId === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+          }).then(history.push(`/planet/edit/${planetId.id}`))
+        } else {
+
         updatePlanet(planet)
         .then(history.push(`/planet/${planetId.id}`))
+        }
     }
 
     const handleClickCancel = () => {
@@ -60,6 +90,7 @@ const PlanetForm = () => {
         .then(getColors)
         .then(color => setColor(color))
     }, [])
+    
 
     return (
         <Container>
@@ -80,7 +111,7 @@ const PlanetForm = () => {
                     <Input type="text" class="form-control" id="orbitalPeriod" placeholder ="how many days to go around sun" value={planet.orbitalPeriod} onChange={handleInput} required/>
 
                     <label for="star">Assigned Star</label>
-                    <Input type="select" name="select" id="starId" value={planet.star?.name} onChange={handleInput} >
+                    <Input type="select" name="select" id="starId" value={planet.starId} onChange={handleInput} >
                         <option value={null}>What star does the planet belong too</option>
                         {star.map((s) => {
                             return <option value={s.id}>{s.name}</option>

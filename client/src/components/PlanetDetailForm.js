@@ -61,7 +61,7 @@ const PlanetDetailForm = () => {
                     <Input type="textarea" class="form-control" id="notes" placeholder ="notes" value={planetDetail.notes} onChange={handleInput} required/>
  
                 </div>
-
+{/* 
                     {planet.id? 
                     <div>
                         <button type="submit" class="btn btn-primary mr-3" onClick={
@@ -73,11 +73,11 @@ const PlanetDetailForm = () => {
                         }}>Cancel</button>
 
                     </div>
-                    :
+                    : */}
                     <button type="submit" class="btn btn-primary" onClick={
                         handleCreatePlanetDetail
                     }>Add</button>
-                  }
+                  {/* } */}
                 </div>
             </div>
         </Container>

@@ -8,28 +8,28 @@ export const Moon = ({moon}) => {
 
     let imgtype 
     if (moon.moonTypeId === 1 && moon.diameter < 1000) {
-        imgtype = <img src={FullMoon} width="50" height="50" />
+        imgtype = <img src={FullMoon} width="35" height="35" />
     } else if (moon.moonTypeId === 1 && moon.diameter <= 3000) {
-        imgtype = <img src={FullMoon} width="75" height="75" shadow="0px, 16px" />
+        imgtype = <img src={FullMoon} width="50" height="50" shadow="0px, 16px" />
     } else if (moon.moonTypeId === 1 && moon.diameter > 3001) {
-        imgtype = <img src={FullMoon} width="100" height="100" shadow="0px, 16px" />
+        imgtype = <img src={FullMoon} width="70" height="70" shadow="0px, 16px" />
 
     } else if (moon.moonTypeId === 2 && moon.diameter < 1000) {
-        imgtype = <img src={WaxingMoon} width="50" height="50" />
+        imgtype = <img src={WaxingMoon} width="35" height="35" />
     } else if (moon.moonTypeId === 2 && moon.diameter <= 3000) {
-        imgtype = <img src={WaxingMoon} width="75" height="75" shadow="0px, 16px" />
+        imgtype = <img src={WaxingMoon} width="50" height="50" shadow="0px, 16px" />
     } else if (moon.moonTypeId === 2 && moon.diameter > 3001) {
-        imgtype = <img src={WaxingMoon} width="100" height="100" shadow="0px, 16px" />
+        imgtype = <img src={WaxingMoon} width="70" height="70" shadow="0px, 16px" />
 
     } else if (moon.moonTypeId === 3 && moon.diameter < 1000) {
-        imgtype = <img src={WainingMoon} width="50" height="50" />
+        imgtype = <img src={WainingMoon} width="35" height="35" />
     } else if (moon.moonTypeId === 3 && moon.diameter <= 3000) {
-        imgtype = <img src={WainingMoon} width="75" height="75" shadow="0px, 16px" />
+        imgtype = <img src={WainingMoon} width="50" height="50" shadow="0px, 16px" />
     } else if (moon.moonTypeId === 3 && moon.diameter > 3001) {
-        imgtype = <img src={WainingMoon} width="100" height="100" shadow="0px, 16px" />
+        imgtype = <img src={WainingMoon} width="70" height="70" shadow="0px, 16px" />
 
     } else {
-        imgtype = <img src={WainingMoon} width="50" height="50" shadow="0px, 16px" />
+        imgtype = <img src={WainingMoon} width="35" height="35" shadow="0px, 16px" />
     }
 
     console.log(moon)

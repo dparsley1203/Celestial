@@ -9,11 +9,11 @@ namespace Celestial.Models
     public class Star
     {
         public int Id { get; set; }
-
+        [Required(ErrorMessage = "Please provide a Name")]
         public string Name { get; set; }
-
+        [Required]
         public int Diameter { get; set; }
-
+        [Required]
         public int Mass { get; set; }
         public int StarTypeId { get; set; }
         public int Temperature { get; set; }
