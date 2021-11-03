@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap"
 import { addStar, getStarsById, updateStar } from "../modules/starManager";
 import { starTypes } from "../modules/starTypeManager";
+import Swal from "sweetalert2"
 
 const StarForm = () => {
 
@@ -31,13 +32,38 @@ const StarForm = () => {
     }
     
     const handleCreateStar = () => {
+
+        if (star.name === 0 || star.diameter === 0 || star.mass === 0 || star.starTypeId === 0 || star.temperature === 0 || 
+            star.name === "" || star.diameter === "" || star.mass === "" || star.starTypeId === "" || star.temperature === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+          }).then(history.push('/star/create'))
+        } else {
+
+          
         addStar(star)
         .then(history.push('/'))
+        }
     }
 
     const handleUpdateStar = () => {
+
+        if (star.name === 0 || star.diameter === 0 || star.mass === 0 || star.starTypeId === 0 || star.temperature === 0 || 
+            star.name === "" || star.diameter === "" || star.mass === "" || star.starTypeId === "" || star.temperature === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+        }).then(history.push(`/star/edit/${starId.id}`))
+
+    } else {
         updateStar(star)
         .then(history.push(`/star/${starId.id}`))
+        }
     }
 
     const handleClickCancel = () => {

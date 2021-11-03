@@ -4,6 +4,7 @@ import { Container, Input } from "reactstrap";
 import { addMoon, getMoonsById, updateMoon } from "../modules/moonManager";
 import { moonTypes } from "../modules/moonTypeManager";
 import { getPlanets } from "../modules/planetManager";
+import Swal from "sweetalert2"
 
 
 const MoonForm = () => {
@@ -37,13 +38,38 @@ const MoonForm = () => {
     }
 
     const handleCreateMoon = () => {
+
+        if (moon.name === 0 || moon.diameter === 0 || moon.distanceFromPlanet === 0 || moon.orbitalPeriod === 0 || moon.moonTypeId === 0 || moon.planetId === 0 ||
+            moon.name === "" || moon.diameter === "" || moon.distanceFromPlanet === "" || moon.orbitalPeriod === "" || moon.moonTypeId === "" || moon.planetId === "" )
+            {Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please ensure all fields are filled out correctly',
+              }).then(history.push('/moon/create'))
+            } else {
+
         addMoon(moon)
         .then(history.push('/'))
+            }
     }
 
     const handleUpdateMoon = () => {
+
+        if (moon.name === 0 || moon.diameter === 0 || moon.distanceFromPlanet === 0 || moon.orbitalPeriod === 0 || moon.moonTypeId === 0 || moon.planetId === 0 ||
+        moon.name === "" || moon.diameter === "" || moon.distanceFromPlanet === "" || moon.orbitalPeriod === "" || moon.moonTypeId === "" || moon.planetId === "" )
+            {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please ensure all fields are filled out correctly',
+              }).then(history.push(`/moon/edit/${moonId.id}`))
+
+            } else {
+
         updateMoon(moon)
         .then(history.push(`/moon/${moonId.id}`))
+
+            }
     }
 
     const handleClickCancel = () => {

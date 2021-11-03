@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap";
+import Swal from "sweetalert2"
 import { addPlanet, getPlanetsById, updatePlanet } from "../modules/planetManager";
 import { planetTypes } from "../modules/planetTypeManager";
 import { getStars } from "../modules/starManager";
@@ -44,13 +45,37 @@ const PlanetForm = () => {
     }
 
     const handleCreatePlanet = () => {
+
+        if (planet.name === 0 || planet.diameter === 0 || planet.distanceFromStar === 0 || planet.orbitalPeriod === 0 || planet.starId === 0 || planet.planetTypeId === 0 || planet.colorId === 0  ||
+            planet.name === "" || planet.diameter === "" || planet.distanceFromStar === "" || planet.orbitalPeriod === "" || planet.temperature === "" || planet.starId === "" || planet.planetTypeId === "" || planet.colorId === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+          }).then(history.push('/planet/create'))
+        } else {
+
         addPlanet(planet)
         .then(history.push('/'))
+        }
     }
 
     const handleUpdatePlanet = () => {
+
+        if (planet.name === 0 || planet.diameter === 0 || planet.distanceFromStar === 0 || planet.orbitalPeriod === 0 || planet.starId === 0 || planet.planetTypeId === 0 || planet.colorId === 0  ||
+            planet.name === "" || planet.diameter === "" || planet.distanceFromStar === "" || planet.orbitalPeriod === "" || planet.temperature === "" || planet.starId === "" || planet.planetTypeId === "" || planet.colorId === ""  )
+        {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please ensure all fields are filled out correctly',
+          }).then(history.push(`/planet/edit/${planetId.id}`))
+        } else {
+
         updatePlanet(planet)
         .then(history.push(`/planet/${planetId.id}`))
+        }
     }
 
     const handleClickCancel = () => {
