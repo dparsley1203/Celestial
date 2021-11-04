@@ -19,14 +19,12 @@ namespace Celestial.Controllers
     {
         private readonly IStarRepository _starRepository;
         private readonly IUserRepository _userRepository;
-        private readonly IStarTypeRepository _starTypeRepository;
         private readonly IStarDetailRepository _starDetailRepository;
 
         public StarController(IStarRepository starRepository, IUserRepository userRepository, IStarTypeRepository starTypeRepository, IStarDetailRepository starDetailRepository)
         {
             _starRepository = starRepository;
             _userRepository = userRepository;
-            _starTypeRepository = starTypeRepository;
             _starDetailRepository = starDetailRepository;
         }
 
@@ -42,9 +40,9 @@ namespace Celestial.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var currentUserId = GetCurrentUserProfile().Id;
+/*            var currentUserId = GetCurrentUserProfile().Id;*/
             var star = _starRepository.GetStarById(id);
-            var details = _starDetailRepository.GetDetailsByStarId(id);
+/*            var details = _starDetailRepository.GetDetailsByStarId(id);*/
 
             if (star == null)
             {

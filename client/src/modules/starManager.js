@@ -19,7 +19,7 @@ export const getStars = () => {
         );
 }
 
-export const getStarsById = (id) => {
+export const getStarById = (id) => {
     return getToken()
     .then((token) =>
         fetch(`${_apiUrl}/${id}`, {
