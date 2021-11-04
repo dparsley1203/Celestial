@@ -7,26 +7,26 @@ import WainingMoon from "../Img/WainingMoon.png"
 export const Moon = ({moon}) => {
 
     let imgtype 
-    if (moon.moonTypeId === 1 && moon.diameter < 1000) {
-        imgtype = <img src={FullMoon} width="35" height="35" />
-    } else if (moon.moonTypeId === 1 && moon.diameter <= 3000) {
-        imgtype = <img src={FullMoon} width="50" height="50" shadow="0px, 16px" />
-    } else if (moon.moonTypeId === 1 && moon.diameter > 3001) {
-        imgtype = <img src={FullMoon} width="70" height="70" shadow="0px, 16px" />
+    if (moon.moonTypeId === 1 && moon.diameter < 2000) {
+        imgtype = <img src={FullMoon} width="20" height="20" />
+    } else if (moon.moonTypeId === 1 && moon.diameter <= 4000) {
+        imgtype = <img src={FullMoon} width="30" height="30" shadow="0px, 16px" />
+    } else if (moon.moonTypeId === 1 && moon.diameter >= 4001) {
+        imgtype = <img src={FullMoon} width="45" height="45" shadow="0px, 16px" />
 
-    } else if (moon.moonTypeId === 2 && moon.diameter < 1000) {
-        imgtype = <img src={WaxingMoon} width="35" height="35" />
-    } else if (moon.moonTypeId === 2 && moon.diameter <= 3000) {
-        imgtype = <img src={WaxingMoon} width="50" height="50" shadow="0px, 16px" />
-    } else if (moon.moonTypeId === 2 && moon.diameter > 3001) {
-        imgtype = <img src={WaxingMoon} width="70" height="70" shadow="0px, 16px" />
+    } else if (moon.moonTypeId === 2 && moon.diameter < 2000) {
+        imgtype = <img src={WaxingMoon} width="20" height="20" />
+    } else if (moon.moonTypeId === 2 && moon.diameter <= 4000) {
+        imgtype = <img src={WaxingMoon} width="30" height="30" shadow="0px, 16px" />
+    } else if (moon.moonTypeId === 2 && moon.diameter >= 4001) {
+        imgtype = <img src={WaxingMoon} width="45" height="45" shadow="0px, 16px" />
 
-    } else if (moon.moonTypeId === 3 && moon.diameter < 1000) {
-        imgtype = <img src={WainingMoon} width="35" height="35" />
-    } else if (moon.moonTypeId === 3 && moon.diameter <= 3000) {
-        imgtype = <img src={WainingMoon} width="50" height="50" shadow="0px, 16px" />
-    } else if (moon.moonTypeId === 3 && moon.diameter > 3001) {
-        imgtype = <img src={WainingMoon} width="70" height="70" shadow="0px, 16px" />
+    } else if (moon.moonTypeId === 3 && moon.diameter < 2000) {
+        imgtype = <img src={WainingMoon} width="20" height="20" />
+    } else if (moon.moonTypeId === 3 && moon.diameter <= 4000) {
+        imgtype = <img src={WainingMoon} width="30" height="30" shadow="0px, 16px" />
+    } else if (moon.moonTypeId === 3 && moon.diameter >= 4001) {
+        imgtype = <img src={WainingMoon} width="45" height="45" shadow="0px, 16px" />
 
     } else {
         imgtype = <img src={WainingMoon} width="35" height="35" shadow="0px, 16px" />

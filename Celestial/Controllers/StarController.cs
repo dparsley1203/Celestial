@@ -40,9 +40,7 @@ namespace Celestial.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-/*            var currentUserId = GetCurrentUserProfile().Id;*/
             var star = _starRepository.GetStarById(id);
-/*            var details = _starDetailRepository.GetDetailsByStarId(id);*/
 
             if (star == null)
             {

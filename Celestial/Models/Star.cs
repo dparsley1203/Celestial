@@ -21,5 +21,7 @@ namespace Celestial.Models
         public int UserId { get; set; }
         public User User { get; set; }
         public bool IsByCurrentUser { get; set; }
+
+
     }
 }
