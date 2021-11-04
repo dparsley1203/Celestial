@@ -67,6 +67,8 @@ const MoonForm = () => {
             } else {
 
         updateMoon(moon)
+        .then(getMoonsById(moonId.id))
+        .then(moon => setMoon(moon))
         .then(history.push(`/moon/${moonId.id}`))
 
             }
@@ -111,7 +113,7 @@ const MoonForm = () => {
 
                     <label for="moonType">Planet Type</label>
                     <Input type="select" name="select" id="moonTypeId" value={moon.moonTypeId} onChange={handleInput} >
-                        <option value={null}>Select a planet Type</option>
+                        <option value={null}>Select a Moon's appearance</option>
                         {moonType.map((mt) => {
                             return <option value={mt.id}>{mt.type}</option>
                             })}

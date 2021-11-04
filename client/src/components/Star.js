@@ -9,7 +9,7 @@ import KStar from '../Img/KStar.png';
 import MStar from '../Img/MStar.png';
 import { Planet } from "./Planet";
 import "./ApplicationViews"
-import "./Pictures.css"
+
 
 //used props because we needed to pass in multiple objects into star (line 42 of StarList)
 export const Star = (props) => {

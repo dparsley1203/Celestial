@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import {  Button } from "reactstrap";
 import { getPlanetDetailsByPlanetId } from "../modules/planetDetailManager";
-import { deletePlanet, getPlanetsById } from "../modules/planetManager";
-import { updatePlanetDetail } from "../modules/planetDetailManager";
+import { deletePlanet, getPlanetById } from "../modules/planetManager";
+
 
 
 export const PlanetDetail = () => {
@@ -18,7 +18,7 @@ export const PlanetDetail = () => {
     }
 
     useEffect(() => {
-        getPlanetsById(id)
+        getPlanetById(id)
         .then(setPlanet)
         .then(getPlanetDetails)
     }, [])
@@ -34,11 +34,6 @@ export const PlanetDetail = () => {
 
     const handleClickEditPlanet = () => {
         history.push(`/planet/edit/${planet.id}`)
-    }
-
-    const handleUpdatePlanetDetail = () => {
-        updatePlanetDetail(planet)
-        .then(history.push(`/planet/${planet.id}`))
     }
 
     const planetSpeedPerDay = ((planet.distanceFromStar * 2 * 3.14) / planet.orbitalPeriod).toLocaleString('en-Us')

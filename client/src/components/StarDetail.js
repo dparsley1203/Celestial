@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import { Col, Button } from "reactstrap";
 import { Star } from "./Star"; // not needed at the moment.  May add the star pic back later
-import { deleteStar, getStars, getStarsById } from "../modules/starManager";
+import { deleteStar, getStars, getStarById } from "../modules/starManager";
 
 
 export const StarDetail = () => {
@@ -17,7 +17,7 @@ export const StarDetail = () => {
     // }
 
     useEffect(() => {
-        getStarsById(id)
+        getStarById(id)
         .then(setStar)
         // .then(getStarDetails())
     }, []);

@@ -153,7 +153,7 @@ export const Planet = ({planet}) => {
 
     } else if (planet.planetTypeId === 3 && planet.diameter <= 7000 && planet.colorId === 6) {
         imgtype = <img src={GreenIce} width="120" height="120" />
-    } else if  (planet.planetTypeId === 3 && planet.diameter <= 10000 && planet.colorId === 6) {
+    } else if  (planet.planetTypeId === 3 && planet.diameter < 10000 && planet.colorId === 6) {
         imgtype = <img src={GreenIce} width="180" height="180" />
     } else if (planet.planetTypeId === 3 && planet.diameter > 10001 && planet.colorId === 6) {
         imgtype = <img src={GreenIce} width="225" height="225" />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap"
-import { addStar, getStarsById, updateStar } from "../modules/starManager";
+import { addStar, getStarById, updateStar } from "../modules/starManager";
 import { starTypes } from "../modules/starTypeManager";
 import Swal from "sweetalert2"
 
@@ -21,7 +21,7 @@ const StarForm = () => {
 
     if(starId.id && star.name === "")
     {
-        getStarsById(starId.id)
+        getStarById(starId.id)
         .then(star => setStar(star))
     }
 
@@ -62,6 +62,8 @@ const StarForm = () => {
 
     } else {
         updateStar(star)
+        // .then(getStarById(starId.id))
+        // .then(star => setStar(star))
         .then(history.push(`/star/${starId.id}`))
         }
     }
@@ -70,13 +72,9 @@ const StarForm = () => {
         history.push(`/star/${starId.id}`)
     }
 
-    const GetStarTypes = () => {
+    useEffect(() => {
         starTypes()
         .then(type => setStarType(type))
-    }
-
-    useEffect(() => {
-        GetStarTypes();
     }, []);
 
     return (
@@ -95,7 +93,7 @@ const StarForm = () => {
                     <Input type="text" class="form-control" id="mass" placeholder ="solor mass" value={star.mass} onChange={handleInput} required/>
 
                     <label for="starType">Star Type</label>
-                    <Input type="select" name="select" id="starTypeId" value={star.starTypeId} onChange={handleInput} >
+                    <Input type="select" name="select" id="starTypeId" value={parseInt(star.starTypeId)} onChange={handleInput} >
                         <option value={null}>Select a Star Type</option>
                         {starType.map((st) => {
                             return <option value={st.id}>{st.type}</option>

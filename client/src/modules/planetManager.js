@@ -19,7 +19,7 @@ export const getPlanets = () => {
         );
 }
 
-export const getPlanetsById = (id) => {
+export const getPlanetById = (id) => {
     return getToken()
     .then((token) =>
         fetch(`${_apiUrl}/${id}`, {

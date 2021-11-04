@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap";
 import Swal from "sweetalert2"
-import { addPlanet, getPlanetsById, updatePlanet } from "../modules/planetManager";
+import { addPlanet, getPlanetById, updatePlanet } from "../modules/planetManager";
 import { planetTypes } from "../modules/planetTypeManager";
 import { getStars } from "../modules/starManager";
 import { getColors } from "../modules/colorManager";
@@ -30,7 +30,7 @@ const PlanetForm = () => {
 
     if (planetId.id && planet.name === "")
     {
-        getPlanetsById(planetId.id)
+        getPlanetById(planetId.id)
         .then(planet => setPlanet(planet))
     }
 
@@ -70,7 +70,7 @@ const PlanetForm = () => {
         } else {
 
         updatePlanet(planet)
-        .then(getPlanetsById(planetId.id))
+        .then(getPlanetById(planetId.id))
         .then(planet => setPlanet(planet))
         .then(history.push(`/planet/${planetId.id}`))
         }
