@@ -62,9 +62,8 @@ const StarForm = () => {
 
     } else {
         updateStar(star)
-        // .then(getStarById(starId.id))
-        // .then(star => setStar(star))
-        .then(history.push(`/star/${starId.id}`))
+
+        .then(() => history.push(`/star/${starId.id}`))
         }
     }
 

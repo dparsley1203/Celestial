@@ -5,7 +5,7 @@ namespace Celestial.Repositories
 {
     public interface IStarRepository
     {
-        List<Star> GetAll(string fireBaseId);
+        List<Star> GetAll(int id);
         Star GetStarById(int id);
         void Add(Star star);
         void Delete(int id);

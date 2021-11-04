@@ -70,9 +70,8 @@ const PlanetForm = () => {
         } else {
 
         updatePlanet(planet)
-        .then(getPlanetById(planetId.id))
-        .then(planet => setPlanet(planet))
-        .then(history.push(`/planet/${planetId.id}`))
+
+        .then(() => history.push(`/planet/${planetId.id}`))
         }
     }
 

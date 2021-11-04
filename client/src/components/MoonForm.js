@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router";
 import { Container, Input } from "reactstrap";
-import { addMoon, getMoonsById, updateMoon } from "../modules/moonManager";
+import { addMoon, getMoonById, updateMoon } from "../modules/moonManager";
 import { moonTypes } from "../modules/moonTypeManager";
 import { getPlanets } from "../modules/planetManager";
 import Swal from "sweetalert2"
@@ -27,7 +27,7 @@ const MoonForm = () => {
     //Gets the moon by id so the moons info will be shown in order to edit
     if (moonId.id && moon.name === "")
     {
-        getMoonsById(moonId.id)
+        getMoonById(moonId.id)
         .then(moon => setMoon(moon))
     }
 
@@ -67,9 +67,7 @@ const MoonForm = () => {
             } else {
 
         updateMoon(moon)
-        .then(getMoonsById(moonId.id))
-        .then(moon => setMoon(moon))
-        .then(history.push(`/moon/${moonId.id}`))
+        .then(() => history.push(`/moon/${moonId.id}`))
 
             }
     }
