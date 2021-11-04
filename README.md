@@ -19,7 +19,7 @@ Full Stack React + Web API Back-End Capstone
 
 Create Table Script: [Create Table Script](https://github.com/dparsley1203/Celestial/blob/main/SQL/01_Db_create.sql)
 
-Add Seed Data Script: [Create Table Script](https://github.com/dparsley1203/Celestial/blob/main/SQL/02_Seed_Data.sql)
+Add Seed Data Script: [Create Seed Script](https://github.com/dparsley1203/Celestial/blob/main/SQL/02_Seed_Data.sql)
 
 ## Capstone ERD:
 
