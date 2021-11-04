@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { Col, Button } from "reactstrap";
-import { Star } from "./Star"; // not needed at the moment.  May add the star pic back later
+import { Button } from "reactstrap";
 import { deleteStar, getStars, getStarById } from "../modules/starManager";
 
 
 export const StarDetail = () => {
 
     const [ star, setStar] = useState({});
-    // const [ starDetails, setStarDetails ] = useState([])
+
     const { id } = useParams();
     const history = useHistory();
 
-    // const getStarDetails = () => {
-    //     getStarDetailsByStarId(id).then(details => setStarDetails(details))
-    // }
+
 
     useEffect(() => {
         getStarById(id)
         .then(setStar)
-        // .then(getStarDetails())
     }, []);
 
     const handleClickDeleteStar = () => {
@@ -27,7 +23,7 @@ export const StarDetail = () => {
         if(confirm == true)
         {deleteStar(star)
         .then(getStars)
-        .then(history.push("/"))} else {
+        .then(() => history.push("/"))} else {
         return;
     }}
 

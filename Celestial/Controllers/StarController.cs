@@ -32,7 +32,7 @@ namespace Celestial.Controllers
         public IActionResult Get()
         {
             var currentUserId = GetCurrentUserProfile();
-            var stars = _starRepository.GetAll(currentUserId.FireBaseId);
+            var stars = _starRepository.GetAll(currentUserId.Id);
 
             return Ok(stars);
         }

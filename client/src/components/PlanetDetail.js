@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import {  Button } from "reactstrap";
-import { getPlanetDetailsByPlanetId } from "../modules/planetDetailManager";
 import { deletePlanet, getPlanetById } from "../modules/planetManager";
 
 
@@ -9,18 +8,12 @@ import { deletePlanet, getPlanetById } from "../modules/planetManager";
 export const PlanetDetail = () => {
 
     const [ planet, setPlanet ] = useState([])
-    const [ planetDetails, setPlanetDetails ] = useState([])
     const { id } = useParams();
     const history = useHistory();
-
-    const getPlanetDetails = () => {
-        getPlanetDetailsByPlanetId(id).then(details => setPlanetDetails(details))
-    }
 
     useEffect(() => {
         getPlanetById(id)
         .then(setPlanet)
-        .then(getPlanetDetails)
     }, [])
 
     const handleClickDeletePlanet = () => {
@@ -28,7 +21,7 @@ export const PlanetDetail = () => {
         if(confirm == true)
         {deletePlanet(planet)
         .then(planets => setPlanet(planets))
-        .then(history.push("/"))} else {
+        .then(() => history.push("/"))} else {
         return;
     }}
 

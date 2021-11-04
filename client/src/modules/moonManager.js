@@ -19,7 +19,7 @@ export const getAllMoonsByUserId = () => {
         );
 }
 
-export const getMoonsById = (id) => {
+export const getMoonById = (id) => {
     return getToken()
     .then((token) =>
         fetch(`${_apiUrl}/${id}`, {

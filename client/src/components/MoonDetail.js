@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Button } from "reactstrap";
-import { getMoonDetailsByMoonId } from "../modules/moonDetailManager";
-import { deleteMoon, getMoonsById } from "../modules/moonManager";
-
+import { deleteMoon, getMoonById } from "../modules/moonManager";
 
 export const MoonDetail = () => {
 
     const [ moon, setMoon ] = useState([])
-    const [ moonDetails, setMoonDetails ] = useState([])
     const { id } = useParams();
     const history = useHistory();
 
-    const getMoonDetails = () => {
-        getMoonDetailsByMoonId(id).then(details => setMoonDetails(details))
-    }
 
     useEffect(() => {
-        getMoonsById(id)
+        getMoonById(id)
         .then(setMoon)
-        .then(getMoonDetails)
     }, [])
 
     const handleClickDeleteMoon = () => {
@@ -27,7 +20,7 @@ export const MoonDetail = () => {
         if(confirm == true)
         {deleteMoon(moon)
         .then(moons => setMoon(moons))
-        .then(history.push("/"))} else {
+        .then(() =>history.push("/"))} else {
         return;
     }}
 
